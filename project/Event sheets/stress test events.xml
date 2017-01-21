@@ -15,12 +15,13 @@
                     <param id="0" name="Type">0</param>
                     <param id="1" name="Message">&quot;preload &quot; &amp; loopindex+1</param>
                 </action>
-                <action id="9" name="Preload (by name)" sid="359136894777426" type="Audio">
+                <action disabled="1" id="9" name="Preload (by name)" sid="359136894777426" type="Audio">
                     <param id="0" name="Folder">1</param>
                     <param id="1" name="Audio file name">loopindex+1 &amp; &quot;_01&quot;</param>
                 </action>
-                <action id="4" name="Preload" sid="244950420343872" type="Audio">
-                    <param id="0" name="Audio file">metronome</param>
+                <action disabled="1" id="9" name="Preload (by name)" sid="653590748251647" type="Audio">
+                    <param id="0" name="Folder">1</param>
+                    <param id="1" name="Audio file name">&quot;metronome&quot;</param>
                 </action>
             </actions>
         </event-block>
