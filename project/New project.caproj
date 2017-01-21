@@ -16,6 +16,7 @@
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
@@ -63,6 +64,9 @@
             </object-type>
             <object-type name="Browser" sid="149541331478363">
                 <plugin id="Browser" />
+            </object-type>
+            <object-type name="Gamepad" sid="930894755531681">
+                <plugin id="gamepad" />
             </object-type>
         </object-folder>
         <object-folder name="tests">
@@ -117,6 +121,8 @@
                 <instance-variable name="id" sid="911060681512082" type="number" />
                 <instance-variable name="audioTag" sid="586577689857073" type="string" />
                 <instance-variable name="solo" sid="203292753668318" type="boolean" />
+                <instance-variable name="master" sid="832921213284024" type="boolean" />
+                <instance-variable name="active" sid="264534898726959" type="boolean" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Pin" sid="191021215744434">
@@ -160,6 +166,11 @@
         <global-instance type="Keyboard" uid="1" />
         <global-instance type="Function" uid="8" />
         <global-instance type="Browser" uid="12" />
+        <global-instance type="Gamepad" uid="11">
+            <properties>
+                <analog-deadzone>25</analog-deadzone>
+            </properties>
+        </global-instance>
     </global-instances>
     <sounds-folder>
         <file name="Pickup_Coin7.m4a" />

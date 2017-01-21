@@ -40,6 +40,8 @@
                         <id>1</id>
                         <audioTag></audioTag>
                         <solo>false</solo>
+                        <master>false</master>
+                        <active>false</active>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="Pin" />

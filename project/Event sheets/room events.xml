@@ -8,6 +8,78 @@
         <variable constant="0" name="wave" sid="609255749712654" static="0" type="number">1</variable>
         <variable constant="1" name="MAX_INSTRUMENTS" sid="544170108094473" static="0" type="number">7</variable>
         <variable constant="1" name="max_variations" sid="902463580071685" static="0" type="number">1</variable>
+        <event-group description="" sid="556006138300398" title="Controls">
+            <sub-events>
+                <event-block sid="352422371878316">
+                    <conditions>
+                        <condition id="13" name="Gamepads are supported" sid="756075863531598" type="Gamepad" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="446055993339556">
+                            <conditions>
+                                <condition id="3" name="Is button down" sid="463885857640609" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">14</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" sid="889543764468734" type="player">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="562618078048580">
+                            <conditions>
+                                <condition id="3" name="Is button down" sid="693832929181868" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">15</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" sid="169641465802382" type="player">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="550508294855002">
+                            <conditions>
+                                <condition id="3" name="Is button down" sid="130829021494971" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">12</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" sid="145064240280092" type="player">
+                                    <param id="0" name="Control">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="287649817467517">
+                            <conditions>
+                                <condition id="3" name="Is button down" sid="115227717750801" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">13</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" sid="132548845321595" type="player">
+                                    <param id="0" name="Control">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block disabled="1" sid="304101293309318">
+                    <conditions />
+                    <actions>
+                        <action behavior="8Direction" id="9" name="Set vector X" sid="737153041225734" type="player">
+                            <param id="0" name="Vector X">Gamepad.RawAxis(0, 0)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
         <event-block sid="191493947246880">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="493973392171880" type="System" />
@@ -17,60 +89,6 @@
                     <param id="0" name="Object">player</param>
                 </action>
             </actions>
-            <sub-events>
-                <event-block sid="702116030607019">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="757775949086927" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="156116938429306">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="790314736857133" type="emitter">
-                                    <param id="0" name="Instance variable">id</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">1</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="25" name="Play at object" sid="129269977203903" type="Audio">
-                                    <param id="0" name="Audio file">Kick-TiSh_01-01</param>
-                                    <param id="1" name="Loop">1</param>
-                                    <param id="2" name="Volume">0</param>
-                                    <param id="3" name="Object">emitter</param>
-                                    <param id="4" name="Inner angle">360</param>
-                                    <param id="5" name="Outer angle">360</param>
-                                    <param id="6" name="Outer gain">0</param>
-                                    <param id="7" name="Tag (optional)">&quot;e&quot; &amp; emitter.id</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="347666464744358">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="312741295616166" type="emitter">
-                                    <param id="0" name="Instance variable">id</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">2</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="25" name="Play at object" sid="144183289300618" type="Audio">
-                                    <param id="0" name="Audio file">Sample 2-TiSh_01-01</param>
-                                    <param id="1" name="Loop">1</param>
-                                    <param id="2" name="Volume">0</param>
-                                    <param id="3" name="Object">emitter</param>
-                                    <param id="4" name="Inner angle">360</param>
-                                    <param id="5" name="Outer angle">360</param>
-                                    <param id="6" name="Outer gain">0</param>
-                                    <param id="7" name="Tag (optional)">&quot;e&quot; &amp; emitter.id</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-            </sub-events>
         </event-block>
         <event-block sid="316617317847663">
             <conditions>
@@ -87,23 +105,26 @@
                     <param id="0" name="Pin to">player</param>
                     <param id="1" name="Mode">1</param>
                 </action>
-                <action disabled="1" id="14" name="Log" sid="236960516191276" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">&quot;yo!&quot;</param>
-                </action>
                 <action id="0" name="Play" sid="392265650804152" type="Audio">
                     <param id="0" name="Audio file">Pickup_Coin7</param>
                     <param id="2" name="Loop">0</param>
                     <param id="3" name="Volume">-20</param>
                     <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
                 </action>
+                <action id="3" name="Set volume" sid="933864095258586" type="Audio">
+                    <param id="0" name="Tag">emitter.audioTag</param>
+                    <param id="1" name="dB">-20</param>
+                </action>
             </actions>
             <sub-events>
-                <comment>Remember: On colission is triggered only ONCE!</comment>
+                <comment>Remember: On collision is triggered only ONCE!</comment>
                 <event-block sid="475461656207505">
                     <conditions>
                         <condition id="-19" name="Pick all" sid="281035015895098" type="System">
                             <param id="0" name="Object">emitter</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" sid="705165467485919" type="emitter">
+                            <param id="0" name="Instance variable">active</param>
                         </condition>
                         <condition id="1" inverted="1" name="Is overlapping another object" sid="718319769808438" type="emitter">
                             <param id="0" name="Object">player</param>
@@ -121,6 +142,22 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="211026577087959">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="190699527701444" type="emitter">
+                            <param id="0" name="Instance variable">solo</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="981806724743713" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="0" name="Call function" sid="276755266456660" type="Function">
+                            <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-block>
         <event-block sid="250561156914325">
@@ -129,7 +166,7 @@
             </conditions>
             <actions>
                 <action id="6" name="Stop" sid="594103173910800" type="Audio">
-                    <param id="0" name="Tag">&quot;e&quot; &amp; emitter.id</param>
+                    <param id="0" name="Tag">emitter.audioTag</param>
                 </action>
             </actions>
         </event-block>
@@ -155,6 +192,10 @@
                         </action>
                         <action id="-13" name="Set boolean" sid="277477628110719" type="emitter">
                             <param id="0" name="Instance variable">solo</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="738752696532134" type="emitter">
+                            <param id="0" name="Instance variable">master</param>
                             <param id="1" name="Value">1</param>
                         </action>
                         <action id="-10" name="Set value" sid="149788988223636" type="emitter">
@@ -198,7 +239,10 @@
                         </action>
                         <action id="-10" name="Set value" sid="168497403317913" type="emitter">
                             <param id="0" name="Instance variable">audioTag</param>
-                            <param id="1" name="Value">&quot;asdf&quot;</param>
+                            <param id="1" name="Value">&quot;l0_a_i4_1&quot;</param>
+                        </action>
+                        <action id="34" name="Schedule next play" sid="269886869909376" type="Audio">
+                            <param id="0" name="Time">Audio.CurrentTime+0.05</param>
                         </action>
                         <action id="28" name="Play at object (by name)" sid="223415179010044" type="Audio">
                             <param id="0" name="Folder">1</param>
@@ -210,6 +254,10 @@
                             <param id="6" name="Outer angle">360</param>
                             <param id="7" name="Outer gain">0</param>
                             <param id="8" name="Tag (optional)">emitter.audioTag</param>
+                        </action>
+                        <action id="23" name="Seek to" sid="218264729201845" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="Position">masterTime</param>
                         </action>
                     </actions>
                 </event-block>
@@ -223,6 +271,28 @@
                             <param id="2" name="X">player.X + varX</param>
                             <param id="3" name="Y">player.Y - varY</param>
                         </action>
+                        <action id="-10" name="Set value" sid="475746357302933" type="emitter">
+                            <param id="0" name="Instance variable">audioTag</param>
+                            <param id="1" name="Value">&quot;l0_a_i5_1&quot;</param>
+                        </action>
+                        <action id="34" name="Schedule next play" sid="741224673863507" type="Audio">
+                            <param id="0" name="Time">Audio.CurrentTime+0.05</param>
+                        </action>
+                        <action id="28" name="Play at object (by name)" sid="665904945210480" type="Audio">
+                            <param id="0" name="Folder">1</param>
+                            <param id="1" name="Audio file name">emitter.audioTag</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="4" name="Object">emitter</param>
+                            <param id="5" name="Inner angle">360</param>
+                            <param id="6" name="Outer angle">360</param>
+                            <param id="7" name="Outer gain">0</param>
+                            <param id="8" name="Tag (optional)">emitter.audioTag</param>
+                        </action>
+                        <action id="23" name="Seek to" sid="162615202798695" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="Position">masterTime</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
@@ -230,6 +300,41 @@
         <event-block sid="744011792743049">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="349537999242892" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Preload" sid="828758831745401" type="Audio">
+                    <param id="0" name="Audio file">l0_a_i3_1</param>
+                </action>
+                <action id="4" name="Preload" sid="353502690071370" type="Audio">
+                    <param id="0" name="Audio file">l0_a_i4_1</param>
+                </action>
+                <action id="4" name="Preload" sid="319612304426411" type="Audio">
+                    <param id="0" name="Audio file">l0_a_i5_1</param>
+                </action>
+            </actions>
+        </event-block>
+        <variable constant="0" name="masterTime" sid="297606518208434" static="0" type="number">0</variable>
+        <event-block sid="855114680913091">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="630067307577999" type="emitter">
+                    <param id="0" name="Instance variable">master</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="921913360622701" type="System">
+                    <param id="0" name="Variable">masterTime</param>
+                    <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
+                </action>
+                <action id="14" name="Log" sid="647938337043841" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">masterTime</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="871908020136679">
+            <conditions>
+                <condition id="1" name="Preloads complete" sid="377352177510523" type="Audio" />
+                <condition id="-4" name="Trigger once while true" sid="211302070637851" type="System" />
             </conditions>
             <actions>
                 <action id="0" name="Call function" sid="703216459929504" type="Function">
