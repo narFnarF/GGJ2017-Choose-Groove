@@ -128,10 +128,12 @@
     <layout-folder>
         <layout>test effects.xml</layout>
         <layout>room.xml</layout>
+        <layout>stress test.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>test effects events.xml</event-sheet>
         <event-sheet>room events.xml</event-sheet>
+        <event-sheet>stress test events.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Audio" uid="0">
