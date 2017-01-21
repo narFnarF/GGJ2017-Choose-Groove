@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>stress test events</name>
+    <events>
+        <event-block sid="596678787577265">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="891095545663479" type="System" />
+                <condition id="-12" name="Repeat" sid="728302160663668" type="System">
+                    <param id="0" name="Count">40</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="609785388915955" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;preload &quot; &amp; loopindex+1</param>
+                </action>
+                <action id="9" name="Preload (by name)" sid="359136894777426" type="Audio">
+                    <param id="0" name="Folder">1</param>
+                    <param id="1" name="Audio file name">loopindex+1 &amp; &quot;_01&quot;</param>
+                </action>
+                <action id="4" name="Preload" sid="244950420343872" type="Audio">
+                    <param id="0" name="Audio file">metronome</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="416157791674245">
+            <conditions>
+                <condition id="1" name="Preloads complete" sid="641819969053407" type="Audio" />
+                <condition id="-4" name="Trigger once while true" sid="945832835527418" type="System" />
+                <condition id="-12" name="Repeat" sid="423839864680870" type="System">
+                    <param id="0" name="Count">40</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="911098094893308" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;play &quot; &amp; loopindex+1</param>
+                </action>
+                <action id="29" name="Play at position (by name)" sid="701238681242543" type="Audio">
+                    <param id="0" name="Folder">1</param>
+                    <param id="1" name="Audio file name">loopindex+1 &amp; &quot;_01&quot;</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">-20</param>
+                    <param id="4" name="X">0</param>
+                    <param id="5" name="Y">0</param>
+                    <param id="6" name="Angle">360</param>
+                    <param id="7" name="Inner angle">360</param>
+                    <param id="8" name="Outer angle">0</param>
+                    <param id="9" name="Outer gain">0</param>
+                    <param id="10" name="Tag (optional)">&quot;stress&quot; &amp; loopindex+1</param>
+                </action>
+                <action id="29" name="Play at position (by name)" sid="270053949062531" type="Audio">
+                    <param id="0" name="Folder">1</param>
+                    <param id="1" name="Audio file name">&quot;metronome&quot;</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="4" name="X">0</param>
+                    <param id="5" name="Y">0</param>
+                    <param id="6" name="Angle">360</param>
+                    <param id="7" name="Inner angle">360</param>
+                    <param id="8" name="Outer angle">0</param>
+                    <param id="9" name="Outer gain">0</param>
+                    <param id="10" name="Tag (optional)">&quot;stress&quot; &amp; loopindex+1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
