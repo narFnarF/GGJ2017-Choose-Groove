@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <event-block sid="760653671827716">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="225176677095068" type="System" />
+            </conditions>
+            <actions>
+                <action disabled="1" id="0" name="Play" sid="617507430999471" type="Audio">
+                    <param id="0" name="Audio file">Kick-TiSh_01-01</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">-10000</param>
+                    <param id="1" name="Tag (optional)">&quot;1&quot;</param>
+                </action>
+                <action disabled="1" id="0" name="Play" sid="867886318929906" type="Audio">
+                    <param id="0" name="Audio file">Sample 2-TiSh_01-01</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;2&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="889622645165577" type="Audio">
+                    <param id="0" name="Audio file">Sample1-TiSh_01-01</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;3&quot;</param>
+                </action>
+                <action disabled="1" id="0" name="Play" sid="572496743581944" type="Audio">
+                    <param id="0" name="Audio file">Sharley Close-TiSh_01-01</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;4&quot;</param>
+                </action>
+                <action disabled="1" id="0" name="Play" sid="301036192783905" type="Audio">
+                    <param id="0" name="Audio file">Sharley Open-TiSh_01-01</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;5&quot;</param>
+                </action>
+                <action disabled="1" id="0" name="Play" sid="359281102039279" type="Audio">
+                    <param id="0" name="Audio file">Snare-TiSh_01-01</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;6&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="161312579746471">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="379459583623156" type="Keyboard">
+                    <param id="0" name="Key">49 (1)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Set volume" sid="448804055746897" type="Audio">
+                    <param id="0" name="Tag">&quot;test&quot;</param>
+                    <param id="1" name="dB">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="353451001131016">
+            <conditions>
+                <condition id="1" name="On text changed" sid="656602010720408" type="first" />
+                <condition id="1" name="On text changed" sid="202943607061265" type="second" />
+                <condition id="1" name="On text changed" sid="652733352492495" type="third" />
+                <condition id="1" name="On text changed" sid="557858780488925" type="fourth" />
+                <condition id="1" name="On text changed" sid="251477395217619" type="fifth" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="114261742919084" type="Function">
+                    <param id="0" name="Name">&quot;update&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="685081002543620">
+            <conditions>
+                <condition id="0" name="On function" sid="300012573398027" type="Function">
+                    <param id="0" name="Name">&quot;update&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="12" name="Remove all effects" sid="118042360108799" type="Audio">
+                    <param id="0" name="Tag">&quot;3&quot;</param>
+                </action>
+                <action id="31" name="Add distortion effect" sid="288229741111067" type="Audio">
+                    <param id="0" name="Tag">&quot;3&quot;</param>
+                    <param id="1" name="Threshold">int(first.Text)</param>
+                    <param id="2" name="Headroom">int(second.Text)</param>
+                    <param id="3" name="Drive">int(third.Text)</param>
+                    <param id="4" name="Make-up gain">int(fourth.Text)</param>
+                    <param id="5" name="Mix">int(fifth.Text)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="216306576123383" title="test">
+            <sub-events>
+                <variable constant="0" name="flag" sid="584440591182989" static="1" type="number">0</variable>
+                <variable constant="0" name="counter" sid="654396787841478" static="1" type="number">0</variable>
+                <event-block sid="976227061320294">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="101900523428734" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="881038229319225" type="System">
+                            <param id="0" name="Variable">flag</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="126007475987142">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="896457515525956" type="System">
+                            <param id="0" name="Variable">flag</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="537334391005248" type="System">
+                            <param id="0" name="Interval (seconds)">0.2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="461151821910320" type="System">
+                            <param id="0" name="Variable">counter</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="696268782698825" type="fifth">
+                            <param id="0" name="Text">&quot;&quot; &amp; counter</param>
+                        </action>
+                        <action id="0" name="Call function" sid="891784840010668" type="Function">
+                            <param id="0" name="Name">&quot;update&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
