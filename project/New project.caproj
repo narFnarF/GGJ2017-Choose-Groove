@@ -21,6 +21,7 @@
         <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -100,6 +101,9 @@
                 <behavior-type name="8Direction" sid="173442796374328">
                     <behavior id="EightDir" />
                 </behavior-type>
+                <behavior-type name="ScrollTo" sid="838808160529764">
+                    <behavior id="scrollto" />
+                </behavior-type>
             </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="277816129124971" speed="5">
@@ -107,10 +111,12 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="emiter" sid="488779548420966">
+        <object-type name="emitter" sid="488779548420966">
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="id" sid="911060681512082" type="number" />
+                <instance-variable name="audioTag" sid="586577689857073" type="string" />
+                <instance-variable name="solo" sid="203292753668318" type="boolean" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Pin" sid="191021215744434">
@@ -129,6 +135,7 @@
         <layout>test effects.xml</layout>
         <layout>room.xml</layout>
         <layout>stress test.xml</layout>
+        <layout>spawned objects.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>test effects events.xml</event-sheet>
@@ -171,6 +178,18 @@
         <file name="Sharley Open-TiSh_01-01.ogg" />
         <file name="Snare-TiSh_01-01.m4a" />
         <file name="Snare-TiSh_01-01.ogg" />
+        <file name="l0_a_i3_1.m4a" />
+        <file name="l0_a_i3_1.ogg" />
+        <file name="l0_a_i4_1.m4a" />
+        <file name="l0_a_i4_1.ogg" />
+        <file name="l0_a_i5_1.m4a" />
+        <file name="l0_a_i5_1.ogg" />
+        <file name="l0_a_i6_1.m4a" />
+        <file name="l0_a_i6_1.ogg" />
+        <file name="l0_a_i6_2.m4a" />
+        <file name="l0_a_i6_2.ogg" />
+        <file name="l0_a_i7_1.m4a" />
+        <file name="l0_a_i7_1.ogg" />
     </music-folder>
     <files-folder>
         <file-folder name="Icons">
