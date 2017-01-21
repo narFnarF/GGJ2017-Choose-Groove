@@ -11,6 +11,7 @@
     <saved-with-version>23900</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
@@ -18,6 +19,8 @@
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
+        <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -29,6 +32,7 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>room</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -38,58 +42,96 @@
         <prop name="Fullscreen scaling">High quality</prop>
         <prop name="Loader style">Construct 2 splash</prop>
         <prop name="Orientations">Any</prop>
-        <prop name="Pause on unfocus">No</prop>
+        <prop name="Pause on unfocus">Yes</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preload sounds">Yes</prop>
-        <prop name="Preview browser">(default)</prop>
+        <prop name="Preview browser">NW.js</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
     <object-folder>
-        <object-type name="Audio" sid="828729286033103">
-            <plugin id="Audio" />
-        </object-type>
-        <object-type name="Keyboard" sid="802881310343599">
-            <plugin id="Keyboard" />
-        </object-type>
-        <object-type name="test" sid="476808113913648">
+        <object-folder name="plugins">
+            <object-type name="Audio" sid="828729286033103">
+                <plugin id="Audio" />
+            </object-type>
+            <object-type name="Function" sid="957081131193347">
+                <plugin id="Function" />
+            </object-type>
+            <object-type name="Keyboard" sid="802881310343599">
+                <plugin id="Keyboard" />
+            </object-type>
+            <object-type name="Browser" sid="149541331478363">
+                <plugin id="Browser" />
+            </object-type>
+        </object-folder>
+        <object-folder name="tests">
+            <object-type name="test" sid="476808113913648">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="DragDrop" sid="555277526142382">
+                        <behavior id="DragnDrop" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="798561826379491" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="fifth" sid="309131834999895">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="first" sid="202409944887541">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="fourth" sid="815977137200603">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="second" sid="347054858451928">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="third" sid="744386221039901">
+                <plugin id="TextBox" />
+            </object-type>
+        </object-folder>
+        <object-type name="player" sid="854402448995849">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="DragDrop" sid="555277526142382">
-                    <behavior id="DragnDrop" />
+                <behavior-type name="8Direction" sid="173442796374328">
+                    <behavior id="EightDir" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="798561826379491" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="277816129124971" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="first" sid="202409944887541">
-            <plugin id="TextBox" />
-        </object-type>
-        <object-type name="second" sid="347054858451928">
-            <plugin id="TextBox" />
-        </object-type>
-        <object-type name="third" sid="744386221039901">
-            <plugin id="TextBox" />
-        </object-type>
-        <object-type name="fourth" sid="815977137200603">
-            <plugin id="TextBox" />
-        </object-type>
-        <object-type name="fifth" sid="309131834999895">
-            <plugin id="TextBox" />
-        </object-type>
-        <object-type name="Function" sid="957081131193347">
-            <plugin id="Function" />
+        <object-type name="emiter" sid="488779548420966">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="id" sid="911060681512082" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Pin" sid="191021215744434">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="397089991696385" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />
     <layout-folder>
-        <layout>Layout 1.xml</layout>
+        <layout>test effects.xml</layout>
+        <layout>room.xml</layout>
     </layout-folder>
     <event-folder>
-        <event-sheet>Event sheet 1.xml</event-sheet>
+        <event-sheet>test effects events.xml</event-sheet>
+        <event-sheet>room events.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Audio" uid="0">
@@ -99,17 +141,21 @@
                 <play-in-background>No</play-in-background>
                 <positioned-audio></positioned-audio>
                 <panning-model>HRTF</panning-model>
-                <distance-model>Inverse</distance-model>
-                <listener-z-height>600</listener-z-height>
-                <reference-distance>600</reference-distance>
+                <distance-model>Exponential</distance-model>
+                <listener-z-height>100</listener-z-height>
+                <reference-distance>100</reference-distance>
                 <maximum-distance>10000</maximum-distance>
-                <roll-off-factor>1</roll-off-factor>
+                <roll-off-factor>2</roll-off-factor>
             </properties>
         </global-instance>
         <global-instance type="Keyboard" uid="1" />
         <global-instance type="Function" uid="8" />
+        <global-instance type="Browser" uid="12" />
     </global-instances>
-    <sounds-folder />
+    <sounds-folder>
+        <file name="Pickup_Coin7.m4a" />
+        <file name="Pickup_Coin7.ogg" />
+    </sounds-folder>
     <music-folder>
         <file name="Kick-TiSh_01-01.m4a" />
         <file name="Kick-TiSh_01-01.ogg" />

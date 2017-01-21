@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
-    <name>Layout 1</name>
+    <name>test effects</name>
     <sid>411124655617658</sid>
-    <event-sheet>Event sheet 1</event-sheet>
+    <event-sheet>test effects events</event-sheet>
     <size>
         <width>1708</width>
         <height>960</height>

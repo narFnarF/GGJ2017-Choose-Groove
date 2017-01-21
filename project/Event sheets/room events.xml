@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>room events</name>
+    <events>
+        <event-block sid="191493947246880">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="493973392171880" type="System" />
+            </conditions>
+            <actions>
+                <action id="26" name="Set listener object" sid="294707170655397" type="Audio">
+                    <param id="0" name="Object">player</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="702116030607019">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="757775949086927" type="System">
+                            <param id="0" name="Object">emiter</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="156116938429306">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="790314736857133" type="emiter">
+                                    <param id="0" name="Instance variable">id</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="25" name="Play at object" sid="129269977203903" type="Audio">
+                                    <param id="0" name="Audio file">Kick-TiSh_01-01</param>
+                                    <param id="1" name="Loop">1</param>
+                                    <param id="2" name="Volume">0</param>
+                                    <param id="3" name="Object">emiter</param>
+                                    <param id="4" name="Inner angle">360</param>
+                                    <param id="5" name="Outer angle">360</param>
+                                    <param id="6" name="Outer gain">0</param>
+                                    <param id="7" name="Tag (optional)">&quot;e&quot; &amp; emiter.id</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="347666464744358">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="312741295616166" type="emiter">
+                                    <param id="0" name="Instance variable">id</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="25" name="Play at object" sid="144183289300618" type="Audio">
+                                    <param id="0" name="Audio file">Sample 2-TiSh_01-01</param>
+                                    <param id="1" name="Loop">1</param>
+                                    <param id="2" name="Volume">0</param>
+                                    <param id="3" name="Object">emiter</param>
+                                    <param id="4" name="Inner angle">360</param>
+                                    <param id="5" name="Outer angle">360</param>
+                                    <param id="6" name="Outer gain">0</param>
+                                    <param id="7" name="Tag (optional)">&quot;e&quot; &amp; emiter.id</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="316617317847663">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="515521823437352" type="player">
+                    <param id="0" name="Object">emiter</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="771411248004055" type="emiter">
+                    <param id="0" name="Object">player</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="464729415974102" type="emiter">
+                    <param id="0" name="Pin to">player</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+                <action disabled="1" id="14" name="Log" sid="236960516191276" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;yo!&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="392265650804152" type="Audio">
+                    <param id="0" name="Audio file">Pickup_Coin7</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-20</param>
+                    <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>Remember: On colission is triggered only ONCE!</comment>
+                <event-block sid="475461656207505">
+                    <conditions>
+                        <condition id="-19" name="Pick all" sid="281035015895098" type="System">
+                            <param id="0" name="Object">emiter</param>
+                        </condition>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="718319769808438" type="emiter">
+                            <param id="0" name="Object">player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="259018630203354" type="emiter" />
+                    </actions>
+                </event-block>
+                <event-block sid="952054240373380">
+                    <conditions />
+                    <actions>
+                        <action disabled="1" id="11" name="Set collisions enabled" sid="715852093403407" type="emiter">
+                            <param id="0" name="Collisions">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="250561156914325">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="315049947018790" type="emiter" />
+            </conditions>
+            <actions>
+                <action id="6" name="Stop" sid="594103173910800" type="Audio">
+                    <param id="0" name="Tag">&quot;e&quot; &amp; emiter.id</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

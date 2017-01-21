@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>Event sheet 1</name>
+    <name>test effects events</name>
     <events>
         <event-block sid="760653671827716">
             <conditions>
@@ -101,7 +101,7 @@
                 <event-block sid="976227061320294">
                     <conditions>
                         <condition id="0" name="On key pressed" sid="101900523428734" type="Keyboard">
-                            <param id="0" name="Key">32 (Space)</param>
+                            <param id="0" name="Key">32 (Espace)</param>
                         </condition>
                     </conditions>
                     <actions>
