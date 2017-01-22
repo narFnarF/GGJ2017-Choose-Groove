@@ -37,10 +37,8 @@
                         <collisions>Enabled</collisions>
                     </properties>
                     <instance-variables>
-                        <blerh>1</blerh>
                         <audioTag></audioTag>
                         <solo>false</solo>
-                        <blerh2>false</blerh2>
                         <active>false</active>
                         <picked>false</picked>
                     </instance-variables>
