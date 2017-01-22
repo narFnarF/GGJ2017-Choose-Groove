@@ -181,6 +181,9 @@
             <plugin id="TiledBg" />
             <texture />
         </object-type>
+        <object-type name="Instructions" sid="626027495995596">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>

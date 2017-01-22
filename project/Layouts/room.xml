@@ -222,6 +222,33 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="Instructions" uid="45">
+                    <properties>
+                        <text>This game has no visuals. Keyboard arrows or d-pad to move the listener. Collect the sounds in the room.</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Consolas,-32,400,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>17</x>
+                        <y>349</y>
+                        <z>0</z>
+                        <width>778</width>
+                        <height>125</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>

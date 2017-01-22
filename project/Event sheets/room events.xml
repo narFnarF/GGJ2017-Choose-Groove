@@ -188,18 +188,6 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="417438558574382">
-            <conditions>
-                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="445973519554411" type="emitter">
-                    <param id="0" name="Instance variable">active</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-2" name="Set Y" sid="808773242930784" type="emitter">
-                    <param id="0" name="Y">player.Y + 250</param>
-                </action>
-            </actions>
-        </event-block>
         <event-group description="" sid="168705400442144" title="collisions &amp; attach &amp; destroy &amp; stop audio">
             <sub-events>
                 <variable constant="0" name="collidedInstrument" sid="415592084256187" static="0" type="number">0</variable>
@@ -324,341 +312,476 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="931847693269505">
-            <conditions>
-                <condition id="0" name="On function" sid="514513896689731" type="Function">
-                    <param id="0" name="Name">&quot;advance wave&quot;</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-10" name="Add to" sid="961427690886073" type="System">
-                    <param id="0" name="Variable">currentWave</param>
-                    <param id="1" name="Value">1</param>
-                </action>
-                <action id="14" name="Log" sid="565059735996765" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">&quot;Entering wave &quot; &amp; currentWave</param>
-                </action>
-            </actions>
+        <event-group description="" sid="279352294193933" title="flow">
             <sub-events>
-                <event-block sid="746312175863791">
+                <event-block sid="931847693269505">
                     <conditions>
-                        <condition id="-14" name="Compare variable" sid="142919076191203" type="System">
-                            <param id="0" name="Variable">currentWave</param>
-                            <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">5</param>
+                        <condition id="0" name="On function" sid="514513896689731" type="Function">
+                            <param id="0" name="Name">&quot;advance wave&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Call function" sid="509154015480482" type="Function">
+                        <action id="-10" name="Add to" sid="961427690886073" type="System">
+                            <param id="0" name="Variable">currentWave</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="14" name="Log" sid="565059735996765" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Entering wave &quot; &amp; currentWave</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="746312175863791">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="142919076191203" type="System">
+                                    <param id="0" name="Variable">currentWave</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="509154015480482" type="Function">
+                                    <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>after 4 pickup, go to bridge</comment>
+                        <event-block sid="192150111637892">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="291643114684338" type="System" />
+                                <condition id="-14" name="Compare variable" sid="167721946201765" type="System">
+                                    <param id="0" name="Variable">currentWave</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="199521872738681" type="System">
+                                    <param id="0" name="Variable">currentSection</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="852914512152502" type="Function">
+                                    <param id="0" name="Name">&quot;bridge&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>la fin</comment>
+                        <event-block sid="828204740661960">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="180662451904469" type="System" />
+                                <condition id="-14" name="Compare variable" sid="802292818929885" type="System">
+                                    <param id="0" name="Variable">currentSection</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="650650744122563" type="System">
+                                    <param id="0" name="Variable">currentWave</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="284693592774187">
+                    <conditions>
+                        <condition id="0" name="On function" sid="186178203259564" type="Function">
+                            <param id="0" name="Name">&quot;spawn first emitter&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="402465423265422" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;function Spawn 1st&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <variable constant="0" name="varX" sid="136279378594740" static="0" type="number">300</variable>
+                        <variable constant="0" name="varY" sid="555240108102543" static="0" type="number">200</variable>
+                        <event-block sid="562684034166768">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="380468454650423" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="160659150854903" type="emitterLabel">
+                                    <param id="0" name="Instance variable">instrument</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-16" name="Pick random instance" sid="945757332259127" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="745187589368315" type="emitter">
+                                    <param id="0" name="X">player.X + varX</param>
+                                    <param id="1" name="Y">player.Y + varY</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="961037387660009" type="emitter">
+                                    <param id="0" name="Instance variable">active</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="620041709584763" type="emitter">
+                                    <param id="0" name="Instance variable">solo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="2" name="Set muted" sid="396630798726620" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="368389885695218">
+                    <conditions>
+                        <condition id="0" name="On function" sid="809972090434340" type="Function">
                             <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="162789364120983" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;function Spawn 2&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <variable constant="0" name="varX" sid="959255289035880" static="0" type="number">300</variable>
+                        <variable constant="0" name="varY" sid="216209310846405" static="0" type="number">200</variable>
+                        <variable constant="0" name="firstInstrument" sid="391598099987897" static="0" type="number">0</variable>
+                        <comment>first</comment>
+                        <event-block sid="800923777503827">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="944455042961573" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentSection</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="284729542909060" type="emitter">
+                                    <param id="0" name="Instance variable">picked</param>
+                                </condition>
+                                <condition disabled="1" id="-7" name="Compare instance variable" sid="974689562236211" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">choose(4, 5, 6, 7)</param>
+                                </condition>
+                                <condition disabled="1" id="-7" name="Compare instance variable" sid="554173482734260" type="emitterLabel">
+                                    <param id="0" name="Instance variable">variation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-16" name="Pick random instance" sid="423623094431670" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="965701020652541" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;first&quot;</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="479928485057722" type="emitter">
+                                    <param id="0" name="X">player.X - varX</param>
+                                    <param id="1" name="Y">player.Y - varY</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="471503528016105" type="emitter">
+                                    <param id="0" name="Instance variable">active</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="2" name="Set muted" sid="869581084233875" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="734373937217012" type="System">
+                                    <param id="0" name="Variable">firstInstrument</param>
+                                    <param id="1" name="Value">emitterLabel.instrument</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>second</comment>
+                        <event-block sid="100580200500409">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="119980096944292" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentSection</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="904667010134808" type="emitterLabel">
+                                    <param id="0" name="Instance variable">instrument</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">firstInstrument</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="481377450528235" type="emitter">
+                                    <param id="0" name="Instance variable">picked</param>
+                                </condition>
+                                <condition id="-16" name="Pick random instance" sid="427298739553031" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="610530440925204" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;second&quot;</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="236186676108766" type="emitter">
+                                    <param id="0" name="X">player.X + varX</param>
+                                    <param id="1" name="Y">player.Y - varY</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="972218124633859" type="emitter">
+                                    <param id="0" name="Instance variable">active</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="2" name="Set muted" sid="189398654736755" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="486532933909819">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="385655609424639" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="372720756067880" type="emitterLabel">
+                                    <param id="0" name="Instance variable">instrument</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="306585789069788" type="emitterLabel">
+                                    <param id="0" name="Instance variable">variation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="826769188528287">
+                    <conditions>
+                        <condition id="0" name="On function" sid="299566389002802" type="Function">
+                            <param id="0" name="Name">&quot;bridge&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="450681454537300" type="System">
+                            <param id="0" name="Variable">currentSection</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="744101231948239" type="System">
+                            <param id="0" name="Variable">currentWave</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Play" sid="514651401203410" type="Audio">
+                            <param id="0" name="Audio file">Kick-TiSh_01-01</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;bridge&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="924697045423823">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="233892057308036" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Set muted" sid="780445367947825" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="167934274724306">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="499514006414226" type="emitterLabel">
+                                            <param id="0" name="Instance variable">section</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">currentSection</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="344398653723939" type="emitter" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="470164324230804">
+                    <conditions>
+                        <condition id="0" name="On ended" sid="210310713186796" type="Audio">
+                            <param id="0" name="Tag">&quot;bridge&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="981035364702624" type="Function">
+                            <param id="0" name="Name">&quot;resync all track&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="14" name="Log" sid="595241227571872" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;function Spawn 2&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="343329943698222" title="resync">
+            <sub-events>
+                <event-block sid="812892243880693">
+                    <conditions>
+                        <condition id="0" name="On function" sid="784554178051741" type="Function">
+                            <param id="0" name="Name">&quot;resync all track&quot;</param>
+                        </condition>
+                        <condition id="-11" name="For Each" sid="731728221789462" type="System">
+                            <param id="0" name="Object">emitter</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="23" name="Seek to" sid="847830889881632" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="Position">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>returns the difference between the earliest and latest music track</comment>
+                <event-block sid="607098649649864">
+                    <conditions>
+                        <condition id="0" name="On function" sid="802930901335218" type="Function">
+                            <param id="0" name="Name">&quot;desync delta&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="14" name="Log" sid="876422806557642" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;start&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <variable constant="0" name="earliest" sid="388013393614816" static="0" type="number">0</variable>
+                        <variable constant="0" name="latest" sid="198608149582294" static="0" type="number">0</variable>
+                        <variable constant="0" name="current" sid="422780907575408" static="0" type="number">0</variable>
+                        <event-block sid="337313808656294">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="588735568448925" type="System">
+                                    <param id="0" name="Variable">earliest</param>
+                                    <param id="1" name="Value">Infinity</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="391550013819152" type="System">
+                                    <param id="0" name="Variable">latest</param>
+                                    <param id="1" name="Value">-Infinity</param>
+                                </action>
+                                <action disabled="1" id="14" name="Log" sid="649673984185920" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;init &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="147624888276570">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="805357966236679" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="258059766034305" type="System">
+                                    <param id="0" name="Variable">current</param>
+                                    <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="505533093057433" type="System">
+                                    <param id="0" name="Variable">earliest</param>
+                                    <param id="1" name="Value">min(earliest, current)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="442334412868908" type="System">
+                                    <param id="0" name="Variable">latest</param>
+                                    <param id="1" name="Value">max(latest,current)</param>
+                                </action>
+                                <action disabled="1" id="14" name="Log" sid="591673606155418" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;for each &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <variable constant="0" name="return" sid="489041880000062" static="0" type="number">0</variable>
+                        <event-block sid="972815567176632">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="937203805354521" type="System">
+                                    <param id="0" name="Variable">return</param>
+                                    <param id="1" name="Value">latest-earliest</param>
+                                </action>
+                                <action id="14" name="Log" sid="798100940639803" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;Return &quot; &amp; return</param>
+                                </action>
+                                <action id="1" name="Set return value" sid="747415157309300" type="Function">
+                                    <param id="0" name="Value">return</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="760922123539612">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="591883616693967" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="0" name="Call function" sid="515651735364747" type="Function">
+                            <param id="0" name="Name">&quot;desync delta&quot;</param>
                             <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
-                </event-block>
-                <comment>la fin</comment>
-                <event-block sid="192150111637892">
-                    <conditions>
-                        <condition id="-22" name="Else" sid="155736772735719" type="System" />
-                    </conditions>
-                    <actions />
-                </event-block>
-            </sub-events>
-        </event-block>
-        <event-block sid="284693592774187">
-            <conditions>
-                <condition id="0" name="On function" sid="186178203259564" type="Function">
-                    <param id="0" name="Name">&quot;spawn first emitter&quot;</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="14" name="Log" sid="402465423265422" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">&quot;function Spawn 1st&quot;</param>
-                </action>
-            </actions>
-            <sub-events>
-                <variable constant="0" name="varX" sid="136279378594740" static="0" type="number">300</variable>
-                <variable constant="0" name="varY" sid="555240108102543" static="0" type="number">200</variable>
-                <event-block sid="562684034166768">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="380468454650423" type="emitterLabel">
-                            <param id="0" name="Instance variable">section</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="160659150854903" type="emitterLabel">
-                            <param id="0" name="Instance variable">instrument</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                        <condition id="-16" name="Pick random instance" sid="945757332259127" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-3" name="Set position" sid="745187589368315" type="emitter">
-                            <param id="0" name="X">player.X + varX</param>
-                            <param id="1" name="Y">player.Y + varY</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="961037387660009" type="emitter">
-                            <param id="0" name="Instance variable">active</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="620041709584763" type="emitter">
-                            <param id="0" name="Instance variable">solo</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="2" name="Set muted" sid="396630798726620" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="State">1</param>
-                        </action>
-                    </actions>
+                    <sub-events>
+                        <variable constant="0" name="delta" sid="762448348701774" static="0" type="number">0</variable>
+                        <event-block sid="645553173823798">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="827177489820156" type="System">
+                                    <param id="0" name="Variable">delta</param>
+                                    <param id="1" name="Value">Function.Call(&quot;desync delta&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="469635132271408">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="899625826767062" type="System">
+                                    <param id="0" name="Variable">delta</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0.20</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="493925920320837" type="Function">
+                                    <param id="0" name="Name">&quot;resync all track&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
-        </event-block>
-        <event-block sid="368389885695218">
+        </event-group>
+        <event-block sid="417438558574382">
             <conditions>
-                <condition id="0" name="On function" sid="809972090434340" type="Function">
-                    <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="445973519554411" type="emitter">
+                    <param id="0" name="Instance variable">active</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="14" name="Log" sid="162789364120983" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">&quot;function Spawn 2&quot;</param>
-                </action>
-            </actions>
-            <sub-events>
-                <variable constant="0" name="varX" sid="959255289035880" static="0" type="number">300</variable>
-                <variable constant="0" name="varY" sid="216209310846405" static="0" type="number">200</variable>
-                <variable constant="0" name="firstInstrument" sid="391598099987897" static="0" type="number">0</variable>
-                <comment>first</comment>
-                <event-block sid="800923777503827">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="944455042961573" type="emitterLabel">
-                            <param id="0" name="Instance variable">section</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">currentSection</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="284729542909060" type="emitter">
-                            <param id="0" name="Instance variable">picked</param>
-                        </condition>
-                        <condition disabled="1" id="-7" name="Compare instance variable" sid="974689562236211" type="emitterLabel">
-                            <param id="0" name="Instance variable">section</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">choose(4, 5, 6, 7)</param>
-                        </condition>
-                        <condition disabled="1" id="-7" name="Compare instance variable" sid="554173482734260" type="emitterLabel">
-                            <param id="0" name="Instance variable">variation</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                        <condition id="-16" name="Pick random instance" sid="423623094431670" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="14" name="Log" sid="965701020652541" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;first&quot;</param>
-                        </action>
-                        <action id="-3" name="Set position" sid="479928485057722" type="emitter">
-                            <param id="0" name="X">player.X - varX</param>
-                            <param id="1" name="Y">player.Y - varY</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="471503528016105" type="emitter">
-                            <param id="0" name="Instance variable">active</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="2" name="Set muted" sid="869581084233875" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="State">1</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="734373937217012" type="System">
-                            <param id="0" name="Variable">firstInstrument</param>
-                            <param id="1" name="Value">emitterLabel.instrument</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <comment>second</comment>
-                <event-block sid="100580200500409">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="119980096944292" type="emitterLabel">
-                            <param id="0" name="Instance variable">section</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">currentSection</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="904667010134808" type="emitterLabel">
-                            <param id="0" name="Instance variable">instrument</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">firstInstrument</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="481377450528235" type="emitter">
-                            <param id="0" name="Instance variable">picked</param>
-                        </condition>
-                        <condition id="-16" name="Pick random instance" sid="427298739553031" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="14" name="Log" sid="610530440925204" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;second&quot;</param>
-                        </action>
-                        <action id="-3" name="Set position" sid="236186676108766" type="emitter">
-                            <param id="0" name="X">player.X + varX</param>
-                            <param id="1" name="Y">player.Y - varY</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="972218124633859" type="emitter">
-                            <param id="0" name="Instance variable">active</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="2" name="Set muted" sid="189398654736755" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="State">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block disabled="1" sid="486532933909819">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="385655609424639" type="emitterLabel">
-                            <param id="0" name="Instance variable">section</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="372720756067880" type="emitterLabel">
-                            <param id="0" name="Instance variable">instrument</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">5</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" sid="306585789069788" type="emitterLabel">
-                            <param id="0" name="Instance variable">variation</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                    </conditions>
-                    <actions />
-                </event-block>
-            </sub-events>
-        </event-block>
-        <event-block sid="812892243880693">
-            <conditions>
-                <condition id="0" name="On function" sid="784554178051741" type="Function">
-                    <param id="0" name="Name">&quot;resync all track&quot;</param>
-                </condition>
-                <condition id="-11" name="For Each" sid="731728221789462" type="System">
-                    <param id="0" name="Object">emitter</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="23" name="Seek to" sid="847830889881632" type="Audio">
-                    <param id="0" name="Tag">emitter.audioTag</param>
-                    <param id="1" name="Position">0</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="948940738527205">
-            <conditions>
-                <condition id="0" name="On key pressed" sid="465699767220446" type="Keyboard">
-                    <param id="0" name="Key">32 (Space)</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="0" name="Call function" sid="944663115214364" type="Function">
-                    <param id="0" name="Name">&quot;resync all track&quot;</param>
-                    <param id="1" name="Parameter {n}"></param>
-                </action>
-            </actions>
-        </event-block>
-        <comment>returns the difference between the earliest and latest music track</comment>
-        <event-block sid="607098649649864">
-            <conditions>
-                <condition id="0" name="On function" sid="802930901335218" type="Function">
-                    <param id="0" name="Name">&quot;desync delta&quot;</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="14" name="Log" sid="876422806557642" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">&quot;start&quot;</param>
-                </action>
-            </actions>
-            <sub-events>
-                <variable constant="0" name="earliest" sid="388013393614816" static="0" type="number">0</variable>
-                <variable constant="0" name="latest" sid="198608149582294" static="0" type="number">0</variable>
-                <variable constant="0" name="current" sid="422780907575408" static="0" type="number">0</variable>
-                <event-block sid="337313808656294">
-                    <conditions />
-                    <actions>
-                        <action id="-9" name="Set value" sid="588735568448925" type="System">
-                            <param id="0" name="Variable">earliest</param>
-                            <param id="1" name="Value">Infinity</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="391550013819152" type="System">
-                            <param id="0" name="Variable">latest</param>
-                            <param id="1" name="Value">-Infinity</param>
-                        </action>
-                        <action id="14" name="Log" sid="649673984185920" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;init &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="147624888276570">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="805357966236679" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="258059766034305" type="System">
-                            <param id="0" name="Variable">current</param>
-                            <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="505533093057433" type="System">
-                            <param id="0" name="Variable">earliest</param>
-                            <param id="1" name="Value">min(earliest, current)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="442334412868908" type="System">
-                            <param id="0" name="Variable">latest</param>
-                            <param id="1" name="Value">max(latest,current)</param>
-                        </action>
-                        <action id="14" name="Log" sid="591673606155418" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;for each &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <variable constant="0" name="return" sid="489041880000062" static="0" type="number">0</variable>
-                <event-block sid="972815567176632">
-                    <conditions />
-                    <actions>
-                        <action id="-9" name="Set value" sid="937203805354521" type="System">
-                            <param id="0" name="Variable">return</param>
-                            <param id="1" name="Value">latest-earliest</param>
-                        </action>
-                        <action id="14" name="Log" sid="798100940639803" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;Return &quot; &amp; return</param>
-                        </action>
-                        <action id="1" name="Set return value" sid="747415157309300" type="Function">
-                            <param id="0" name="Value">return</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-block>
-        <event-block sid="760922123539612">
-            <conditions>
-                <condition id="-6" name="Every X seconds" sid="591883616693967" type="System">
-                    <param id="0" name="Interval (seconds)">1.0</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="0" name="Call function" sid="515651735364747" type="Function">
-                    <param id="0" name="Name">&quot;desync delta&quot;</param>
-                    <param id="1" name="Parameter {n}"></param>
+                <action id="-2" name="Set Y" sid="808773242930784" type="emitter">
+                    <param id="0" name="Y">player.Y + 250</param>
                 </action>
             </actions>
         </event-block>
@@ -683,6 +806,19 @@
                                 </action>
                                 <action id="-15" name="Set visible" sid="131538800788602" type="img2">
                                     <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="948940738527205">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="465699767220446" type="Keyboard">
+                                    <param id="0" name="Key">32 (Space)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="944663115214364" type="Function">
+                                    <param id="0" name="Name">&quot;resync all track&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
                                 </action>
                             </actions>
                         </event-block>
