@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
-    <name>New project</name>
+    <name>ggj2017</name>
     <description></description>
-    <version>1.0.0.0</version>
+    <version>1</version>
     <author></author>
     <author-email></author-email>
     <author-website>http://</author-website>
@@ -47,7 +47,7 @@
         <prop name="Fullscreen scaling">High quality</prop>
         <prop name="Loader style">Construct 2 splash</prop>
         <prop name="Orientations">Any</prop>
-        <prop name="Pause on unfocus">Yes</prop>
+        <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preload sounds">Yes</prop>
         <prop name="Preview browser">Chrome</prop>

@@ -371,7 +371,12 @@
                     <param id="0" name="Name">&quot;spawn first emitter&quot;</param>
                 </condition>
             </conditions>
-            <actions />
+            <actions>
+                <action id="14" name="Log" sid="402465423265422" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;function Spawn 1st&quot;</param>
+                </action>
+            </actions>
             <sub-events>
                 <variable constant="0" name="varX" sid="136279378594740" static="0" type="number">300</variable>
                 <variable constant="0" name="varY" sid="555240108102543" static="0" type="number">200</variable>
@@ -537,5 +542,148 @@
                 </event-block>
             </sub-events>
         </event-block>
+        <event-block sid="812892243880693">
+            <conditions>
+                <condition id="0" name="On function" sid="784554178051741" type="Function">
+                    <param id="0" name="Name">&quot;resync all track&quot;</param>
+                </condition>
+                <condition id="-11" name="For Each" sid="731728221789462" type="System">
+                    <param id="0" name="Object">emitter</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="23" name="Seek to" sid="847830889881632" type="Audio">
+                    <param id="0" name="Tag">emitter.audioTag</param>
+                    <param id="1" name="Position">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="948940738527205">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="465699767220446" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="944663115214364" type="Function">
+                    <param id="0" name="Name">&quot;resync all track&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>returns the difference between the earliest and latest music track</comment>
+        <event-block sid="607098649649864">
+            <conditions>
+                <condition id="0" name="On function" sid="802930901335218" type="Function">
+                    <param id="0" name="Name">&quot;desync delta&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="876422806557642" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;start&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <variable constant="0" name="earliest" sid="388013393614816" static="0" type="number">0</variable>
+                <variable constant="0" name="latest" sid="198608149582294" static="0" type="number">0</variable>
+                <variable constant="0" name="current" sid="422780907575408" static="0" type="number">0</variable>
+                <event-block sid="337313808656294">
+                    <conditions />
+                    <actions>
+                        <action id="-9" name="Set value" sid="588735568448925" type="System">
+                            <param id="0" name="Variable">earliest</param>
+                            <param id="1" name="Value">Infinity</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="391550013819152" type="System">
+                            <param id="0" name="Variable">latest</param>
+                            <param id="1" name="Value">-Infinity</param>
+                        </action>
+                        <action id="14" name="Log" sid="649673984185920" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;init &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="147624888276570">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="805357966236679" type="System">
+                            <param id="0" name="Object">emitter</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="258059766034305" type="System">
+                            <param id="0" name="Variable">current</param>
+                            <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="505533093057433" type="System">
+                            <param id="0" name="Variable">earliest</param>
+                            <param id="1" name="Value">min(earliest, current)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="442334412868908" type="System">
+                            <param id="0" name="Variable">latest</param>
+                            <param id="1" name="Value">max(latest,current)</param>
+                        </action>
+                        <action id="14" name="Log" sid="591673606155418" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;for each &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="972815567176632">
+                    <conditions />
+                    <actions>
+                        <action id="1" name="Set return value" sid="747415157309300" type="Function">
+                            <param id="0" name="Value">latest-earliest</param>
+                        </action>
+                        <action id="14" name="Log" sid="798100940639803" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">Function.ReturnValue</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="760922123539612">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="591883616693967" type="System">
+                    <param id="0" name="Interval (seconds)">1.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="515651735364747" type="Function">
+                    <param id="0" name="Name">&quot;desync delta&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="145446040010363" title="Debug">
+            <sub-events>
+                <event-block sid="202487442024719">
+                    <conditions>
+                        <condition id="-18" name="Is in preview" sid="350555465556416" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable comment="0=false" constant="0" name="covering" sid="324683458552144" static="1" type="number">0</variable>
+                        <event-block sid="705878390130902">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="304042302266452" type="Keyboard">
+                                    <param id="0" name="Key">72 (H)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="815646132544398" type="img1">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="131538800788602" type="img2">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>
