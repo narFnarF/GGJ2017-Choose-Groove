@@ -15,6 +15,7 @@
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
     </used-plugins>
@@ -129,11 +130,28 @@
                     <behavior id="Pin" />
                 </behavior-type>
             </behaviors>
+            <container>
+                <type>emitterLabel</type>
+                <type>emitter</type>
+            </container>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="397089991696385" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="emitterLabel" sid="966470938492948">
+            <plugin id="Text" />
+            <instance-variables>
+                <instance-variable name="level" sid="271591110490034" type="number" />
+                <instance-variable name="section" sid="762206133107063" type="number" />
+                <instance-variable name="instrument" sid="833813055119587" type="number" />
+                <instance-variable name="variation" sid="130579217068827" type="number" />
+            </instance-variables>
+            <container>
+                <type>emitterLabel</type>
+                <type>emitter</type>
+            </container>
         </object-type>
     </object-folder>
     <families />
@@ -141,12 +159,14 @@
         <layout>test effects.xml</layout>
         <layout>room.xml</layout>
         <layout>stress test.xml</layout>
+        <layout>emitter pen.xml</layout>
         <layout>spawned objects.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>test effects events.xml</event-sheet>
         <event-sheet>room events.xml</event-sheet>
         <event-sheet>stress test events.xml</event-sheet>
+        <event-sheet>emitter pen events.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Audio" uid="0">
@@ -189,18 +209,18 @@
         <file name="Sharley Open-TiSh_01-01.ogg" />
         <file name="Snare-TiSh_01-01.m4a" />
         <file name="Snare-TiSh_01-01.ogg" />
-        <file name="l0_a_i3_1.m4a" />
-        <file name="l0_a_i3_1.ogg" />
-        <file name="l0_a_i4_1.m4a" />
-        <file name="l0_a_i4_1.ogg" />
-        <file name="l0_a_i5_1.m4a" />
-        <file name="l0_a_i5_1.ogg" />
-        <file name="l0_a_i6_1.m4a" />
-        <file name="l0_a_i6_1.ogg" />
-        <file name="l0_a_i6_2.m4a" />
-        <file name="l0_a_i6_2.ogg" />
-        <file name="l0_a_i7_1.m4a" />
-        <file name="l0_a_i7_1.ogg" />
+        <file name="l0_s1_i3_1.m4a" />
+        <file name="l0_s1_i3_1.ogg" />
+        <file name="l0_s1_i4_1.m4a" />
+        <file name="l0_s1_i4_1.ogg" />
+        <file name="l0_s1_i5_1.m4a" />
+        <file name="l0_s1_i5_1.ogg" />
+        <file name="l0_s1_i6_1.m4a" />
+        <file name="l0_s1_i6_1.ogg" />
+        <file name="l0_s1_i6_2.m4a" />
+        <file name="l0_s1_i6_2.ogg" />
+        <file name="l0_s1_i7_1.m4a" />
+        <file name="l0_s1_i7_1.ogg" />
     </music-folder>
     <files-folder>
         <file-folder name="Icons">

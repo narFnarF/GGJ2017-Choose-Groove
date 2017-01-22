@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>spawned objects</name>
-    <sid>748867062341415</sid>
+    <sid>460724108999512</sid>
     <event-sheet></event-sheet>
     <size>
         <width>1708</width>
@@ -13,7 +13,7 @@
     </margins>
     <unbounded-scrolling>0</unbounded-scrolling>
     <layers>
-        <layer name="Layer 0" sid="834414853887976">
+        <layer name="Layer 0" sid="973139198121626">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>0</transparent>
@@ -29,7 +29,7 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="emitter" uid="10">
+                <instance type="emitter" uid="13">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-animation>Default</initial-animation>
@@ -49,8 +49,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>82</x>
-                        <y>75</y>
+                        <x>97</x>
+                        <y>68</y>
                         <z>0</z>
                         <width>72.938331604</width>
                         <height>72.938331604</height>

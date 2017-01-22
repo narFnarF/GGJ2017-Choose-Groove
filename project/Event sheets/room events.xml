@@ -3,9 +3,10 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>room events</name>
     <events>
-        <variable constant="0" name="level" sid="263851105402925" static="0" type="number">0</variable>
-        <variable constant="0" name="section" sid="116618215899975" static="0" type="text">a</variable>
-        <variable constant="0" name="wave" sid="609255749712654" static="0" type="number">1</variable>
+        <include>emitter pen events</include>
+        <variable constant="0" name="currentLevel" sid="263851105402925" static="0" type="number">0</variable>
+        <variable constant="0" name="currentSection" sid="116618215899975" static="0" type="number">1</variable>
+        <variable constant="0" name="currentWave" sid="609255749712654" static="0" type="number">1</variable>
         <variable constant="1" name="MAX_INSTRUMENTS" sid="544170108094473" static="0" type="number">7</variable>
         <variable constant="1" name="max_variations" sid="902463580071685" static="0" type="number">1</variable>
         <event-group description="" sid="556006138300398" title="Controls">
@@ -89,6 +90,77 @@
                     <param id="0" name="Object">player</param>
                 </action>
             </actions>
+            <sub-events>
+                <event-block sid="971711231016664">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="693298932039081" type="System">
+                            <param id="0" name="Object">emitter</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="558492543041072" type="emitter">
+                            <param id="0" name="Instance variable">audioTag</param>
+                            <param id="1" name="Value">emitterLabel.Text</param>
+                        </action>
+                        <action id="9" name="Preload (by name)" sid="381187454094644" type="Audio">
+                            <param id="0" name="Folder">1</param>
+                            <param id="1" name="Audio file name">emitter.audioTag</param>
+                        </action>
+                        <action id="14" name="Log" sid="457688751872085" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;preload &quot; &amp; emitter.audioTag</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="974328618305395">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="109366151104479" type="emitterLabel">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">currentLevel</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="730046044864638" type="emitter" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="658521231797683">
+            <conditions>
+                <condition id="1" name="Preloads complete" sid="255343389943841" type="Audio" />
+                <condition id="-4" name="Trigger once while true" sid="960864757838555" type="System" />
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="899491116344913" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;preload complete&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="744351176855594">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="821575369087289" type="System">
+                            <param id="0" name="Object">emitter</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="28" name="Play at object (by name)" sid="514877135283410" type="Audio">
+                            <param id="0" name="Folder">1</param>
+                            <param id="1" name="Audio file name">emitter.audioTag</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="4" name="Object">emitter</param>
+                            <param id="5" name="Inner angle">360</param>
+                            <param id="6" name="Outer angle">360</param>
+                            <param id="7" name="Outer gain">0</param>
+                            <param id="8" name="Tag (optional)">emitter.audioTag</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="316617317847663">
             <conditions>
@@ -297,22 +369,6 @@
                 </event-block>
             </sub-events>
         </event-block>
-        <event-block sid="744011792743049">
-            <conditions>
-                <condition id="-2" name="On start of layout" sid="349537999242892" type="System" />
-            </conditions>
-            <actions>
-                <action id="4" name="Preload" sid="828758831745401" type="Audio">
-                    <param id="0" name="Audio file">l0_a_i3_1</param>
-                </action>
-                <action id="4" name="Preload" sid="353502690071370" type="Audio">
-                    <param id="0" name="Audio file">l0_a_i4_1</param>
-                </action>
-                <action id="4" name="Preload" sid="319612304426411" type="Audio">
-                    <param id="0" name="Audio file">l0_a_i5_1</param>
-                </action>
-            </actions>
-        </event-block>
         <variable constant="0" name="masterTime" sid="297606518208434" static="0" type="number">0</variable>
         <event-block sid="855114680913091">
             <conditions>
@@ -331,7 +387,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="871908020136679">
+        <event-block disabled="1" sid="871908020136679">
             <conditions>
                 <condition id="1" name="Preloads complete" sid="377352177510523" type="Audio" />
                 <condition id="-4" name="Trigger once while true" sid="211302070637851" type="System" />
