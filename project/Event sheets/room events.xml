@@ -243,6 +243,10 @@
                             <param id="0" name="Variable">collidedUID</param>
                             <param id="1" name="Value">emitter.UID</param>
                         </action>
+                        <action id="-13" name="Set boolean" sid="769508810740586" type="emitter">
+                            <param id="0" name="Instance variable">picked</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <comment>Destroy all other emitter of the same instrument (in the current section), because we don&apos;t want to randomly pick them ever again</comment>
@@ -330,6 +334,10 @@
                 <action id="-10" name="Add to" sid="961427690886073" type="System">
                     <param id="0" name="Variable">currentWave</param>
                     <param id="1" name="Value">1</param>
+                </action>
+                <action id="14" name="Log" sid="565059735996765" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;Entering wave &quot; &amp; currentWave</param>
                 </action>
             </actions>
             <sub-events>
@@ -430,6 +438,9 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">currentSection</param>
                         </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="284729542909060" type="emitter">
+                            <param id="0" name="Instance variable">picked</param>
+                        </condition>
                         <condition disabled="1" id="-7" name="Compare instance variable" sid="974689562236211" type="emitterLabel">
                             <param id="0" name="Instance variable">section</param>
                             <param id="1" name="Comparison">0</param>
@@ -479,6 +490,9 @@
                             <param id="0" name="Instance variable">instrument</param>
                             <param id="1" name="Comparison">1</param>
                             <param id="2" name="Value">firstInstrument</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="481377450528235" type="emitter">
+                            <param id="0" name="Instance variable">picked</param>
                         </condition>
                         <condition id="-16" name="Pick random instance" sid="427298739553031" type="System">
                             <param id="0" name="Object">emitter</param>
