@@ -18,6 +18,7 @@
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
     </used-plugins>
     <used-behaviors>
@@ -69,6 +70,9 @@
             </object-type>
             <object-type name="Gamepad" sid="930894755531681">
                 <plugin id="gamepad" />
+            </object-type>
+            <object-type name="UserMedia" sid="571719498785596">
+                <plugin id="UserMedia" />
             </object-type>
         </object-folder>
         <object-folder name="tests">
