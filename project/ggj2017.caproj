@@ -112,7 +112,7 @@
                 </behaviors>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="485453221719405" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\narF\Downloads\anna-marinenko-nature-sound-waves-designboom-08.jpg" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\narF\Google Drive\game dev\GGJ 2017 jeu audio\Choose_groove\02_logo.jpg" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -120,7 +120,7 @@
                 <plugin id="Sprite" />
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="848901046562449" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\narF\Downloads\SoundWaves.jpeg" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\narF\Google Drive\game dev\GGJ 2017 jeu audio\Choose_groove\01_logo.jpg" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -200,7 +200,7 @@
         <event-sheet>emitter pen events.xml</event-sheet>
     </event-folder>
     <global-instances>
-        <global-instance type="Audio" uid="0">
+        <global-instance type="Audio" uid="1">
             <properties>
                 <timescale-audio>Off</timescale-audio>
                 <saveload>All</saveload>
@@ -214,10 +214,10 @@
                 <roll-off-factor>2</roll-off-factor>
             </properties>
         </global-instance>
-        <global-instance type="Keyboard" uid="1" />
-        <global-instance type="Function" uid="8" />
+        <global-instance type="Keyboard" uid="8" />
+        <global-instance type="Function" uid="11" />
         <global-instance type="Browser" uid="12" />
-        <global-instance type="Gamepad" uid="11">
+        <global-instance type="Gamepad" uid="69">
             <properties>
                 <analog-deadzone>25</analog-deadzone>
             </properties>

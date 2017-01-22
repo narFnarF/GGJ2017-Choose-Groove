@@ -132,8 +132,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>920</x>
-                        <y>269</y>
+                        <x>794</x>
+                        <y>91</y>
                         <z>0</z>
                         <width>45.989128113</width>
                         <height>45.989128113</height>
@@ -173,11 +173,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>424</x>
-                        <y>294</y>
+                        <x>427</x>
+                        <y>241</y>
                         <z>0</z>
-                        <width>879.186950684</width>
-                        <height>636.531311035</height>
+                        <width>860.649719238</width>
+                        <height>573.766479492</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -211,10 +211,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>427</x>
-                        <y>256</y>
+                        <y>241</y>
                         <z>0</z>
-                        <width>872.897399902</width>
-                        <height>561.30078125</height>
+                        <width>860.650024414</width>
+                        <height>573.765991211</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -226,8 +226,8 @@
                     <properties>
                         <text>This game has no visuals. Keyboard arrows or d-pad to move the listener. Collect the sounds in the room.</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Consolas,-32,400,0</font>
-                        <color>0,0,0</color>
+                        <font>Consolas,-24,400,0</font>
+                        <color>255,255,255</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
                         <hotspot>Top-left</hotspot>
@@ -237,11 +237,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>17</x>
-                        <y>349</y>
+                        <x>1</x>
+                        <y>1</y>
                         <z>0</z>
-                        <width>778</width>
-                        <height>125</height>
+                        <width>708</width>
+                        <height>68</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
