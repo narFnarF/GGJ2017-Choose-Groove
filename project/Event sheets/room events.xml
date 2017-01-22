@@ -202,6 +202,10 @@
         </event-block>
         <event-group description="" sid="168705400442144" title="collisions &amp; attach &amp; destroy &amp; stop audio">
             <sub-events>
+                <variable constant="0" name="collidedInstrument" sid="415592084256187" static="0" type="number">0</variable>
+                <variable constant="0" name="collidedUID" sid="888406868354815" static="0" type="number">0</variable>
+                <comment>Emitter picked up!</comment>
+                <comment>Remember: On collision is triggered only ONCE!</comment>
                 <event-block sid="316617317847663">
                     <conditions>
                         <condition id="0" name="On collision with another object" sid="515521823437352" type="player">
@@ -209,6 +213,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="14" name="Log" sid="569452555593171" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;got one!&quot;</param>
+                        </action>
                         <action id="-4" name="Set position to another object" sid="771411248004055" type="emitter">
                             <param id="0" name="Object">player</param>
                             <param id="1" name="Image point (optional)">0</param>
@@ -220,16 +228,48 @@
                         <action id="0" name="Play" sid="392265650804152" type="Audio">
                             <param id="0" name="Audio file">Pickup_Coin7</param>
                             <param id="2" name="Loop">0</param>
-                            <param id="3" name="Volume">-20</param>
+                            <param id="3" name="Volume">-25</param>
                             <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
                         </action>
                         <action id="3" name="Set volume" sid="933864095258586" type="Audio">
                             <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="dB">-20</param>
+                            <param id="1" name="dB">-10</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="807805727247375" type="System">
+                            <param id="0" name="Variable">collidedInstrument</param>
+                            <param id="1" name="Value">emitterLabel.instrument</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="796010427234148" type="System">
+                            <param id="0" name="Variable">collidedUID</param>
+                            <param id="1" name="Value">emitter.UID</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <comment>Remember: On collision is triggered only ONCE!</comment>
+                        <comment>Destroy all other emitter of the same instrument (in the current section), because we don&apos;t want to randomly pick them ever again</comment>
+                        <event-block sid="249677403569606">
+                            <conditions>
+                                <condition id="-19" name="Pick all" sid="297834658029715" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                                <condition id="-14" inverted="1" name="Pick by unique ID" sid="709653980534869" type="emitter">
+                                    <param id="0" name="Unique ID">collidedUID</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="563458991961523" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentSection</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="664731384231590" type="emitterLabel">
+                                    <param id="0" name="Instance variable">instrument</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">collidedInstrument</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="764911017258393" type="emitter" />
+                            </actions>
+                        </event-block>
+                        <comment>Destroy the non-picked emitter</comment>
                         <event-block sid="475461656207505">
                             <conditions>
                                 <condition id="-19" name="Pick all" sid="281035015895098" type="System">
@@ -255,17 +295,13 @@
                             </actions>
                         </event-block>
                         <event-block sid="211026577087959">
-                            <conditions>
-                                <condition id="-8" name="Is boolean instance variable set" sid="190699527701444" type="emitter">
-                                    <param id="0" name="Instance variable">solo</param>
-                                </condition>
-                            </conditions>
+                            <conditions />
                             <actions>
                                 <action id="-16" name="Wait" sid="981806724743713" type="System">
-                                    <param id="0" name="Seconds">1</param>
+                                    <param id="0" name="Seconds">2</param>
                                 </action>
                                 <action id="0" name="Call function" sid="276755266456660" type="Function">
-                                    <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                                    <param id="0" name="Name">&quot;advance wave&quot;</param>
                                     <param id="1" name="Parameter {n}"></param>
                                 </action>
                             </actions>
@@ -284,6 +320,43 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-block sid="931847693269505">
+            <conditions>
+                <condition id="0" name="On function" sid="514513896689731" type="Function">
+                    <param id="0" name="Name">&quot;advance wave&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="961427690886073" type="System">
+                    <param id="0" name="Variable">currentWave</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="746312175863791">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="142919076191203" type="System">
+                            <param id="0" name="Variable">currentWave</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="509154015480482" type="Function">
+                            <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>la fin</comment>
+                <event-block sid="192150111637892">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="155736772735719" type="System" />
+                    </conditions>
+                    <actions />
+                </event-block>
+            </sub-events>
+        </event-block>
         <event-block sid="284693592774187">
             <conditions>
                 <condition id="0" name="On function" sid="186178203259564" type="Function">
@@ -348,57 +421,33 @@
             <sub-events>
                 <variable constant="0" name="varX" sid="959255289035880" static="0" type="number">300</variable>
                 <variable constant="0" name="varY" sid="216209310846405" static="0" type="number">200</variable>
+                <variable constant="0" name="firstInstrument" sid="391598099987897" static="0" type="number">0</variable>
                 <comment>first</comment>
                 <event-block sid="800923777503827">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="944455042961573" type="emitterLabel">
                             <param id="0" name="Instance variable">section</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
+                            <param id="2" name="Value">currentSection</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" sid="974689562236211" type="emitterLabel">
-                            <param id="0" name="Instance variable">instrument</param>
+                        <condition disabled="1" id="-7" name="Compare instance variable" sid="974689562236211" type="emitterLabel">
+                            <param id="0" name="Instance variable">section</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">4</param>
+                            <param id="2" name="Value">choose(4, 5, 6, 7)</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" sid="554173482734260" type="emitterLabel">
+                        <condition disabled="1" id="-7" name="Compare instance variable" sid="554173482734260" type="emitterLabel">
                             <param id="0" name="Instance variable">variation</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" sid="423623094431670" type="System">
+                            <param id="0" name="Object">emitter</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="14" name="Log" sid="965701020652541" type="Browser">
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;first&quot;</param>
-                        </action>
-                        <action disabled="1" id="-3" name="Create object" sid="914212638114643" type="System">
-                            <param id="0" name="Object to create">emitter</param>
-                            <param id="1" name="Layer">&quot;emiters&quot;</param>
-                            <param id="2" name="X">player.X - varX</param>
-                            <param id="3" name="Y">player.Y - varY</param>
-                        </action>
-                        <action disabled="1" id="-10" name="Set value" sid="168497403317913" type="emitter">
-                            <param id="0" name="Instance variable">audioTag</param>
-                            <param id="1" name="Value">&quot;l0_a_i4_1&quot;</param>
-                        </action>
-                        <action disabled="1" id="34" name="Schedule next play" sid="269886869909376" type="Audio">
-                            <param id="0" name="Time">Audio.CurrentTime+0.05</param>
-                        </action>
-                        <action disabled="1" id="28" name="Play at object (by name)" sid="223415179010044" type="Audio">
-                            <param id="0" name="Folder">1</param>
-                            <param id="1" name="Audio file name">emitter.audioTag</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="4" name="Object">emitter</param>
-                            <param id="5" name="Inner angle">360</param>
-                            <param id="6" name="Outer angle">360</param>
-                            <param id="7" name="Outer gain">0</param>
-                            <param id="8" name="Tag (optional)">emitter.audioTag</param>
-                        </action>
-                        <action disabled="1" id="23" name="Seek to" sid="218264729201845" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="Position">masterTime</param>
                         </action>
                         <action id="-3" name="Set position" sid="479928485057722" type="emitter">
                             <param id="0" name="X">player.X - varX</param>
@@ -412,10 +461,49 @@
                             <param id="0" name="Tag">emitter.audioTag</param>
                             <param id="1" name="State">1</param>
                         </action>
+                        <action id="-9" name="Set value" sid="734373937217012" type="System">
+                            <param id="0" name="Variable">firstInstrument</param>
+                            <param id="1" name="Value">emitterLabel.instrument</param>
+                        </action>
                     </actions>
                 </event-block>
                 <comment>second</comment>
-                <event-block sid="486532933909819">
+                <event-block sid="100580200500409">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="119980096944292" type="emitterLabel">
+                            <param id="0" name="Instance variable">section</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">currentSection</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="904667010134808" type="emitterLabel">
+                            <param id="0" name="Instance variable">instrument</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">firstInstrument</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" sid="427298739553031" type="System">
+                            <param id="0" name="Object">emitter</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="610530440925204" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;second&quot;</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="236186676108766" type="emitter">
+                            <param id="0" name="X">player.X + varX</param>
+                            <param id="1" name="Y">player.Y - varY</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="972218124633859" type="emitter">
+                            <param id="0" name="Instance variable">active</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="2" name="Set muted" sid="189398654736755" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="486532933909819">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="385655609424639" type="emitterLabel">
                             <param id="0" name="Instance variable">section</param>
@@ -433,84 +521,10 @@
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="14" name="Log" sid="610530440925204" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;second&quot;</param>
-                        </action>
-                        <action disabled="1" id="-3" name="Create object" sid="664174673696471" type="System">
-                            <param id="0" name="Object to create">emitter</param>
-                            <param id="1" name="Layer">&quot;emiters&quot;</param>
-                            <param id="2" name="X">player.X + varX</param>
-                            <param id="3" name="Y">player.Y - varY</param>
-                        </action>
-                        <action disabled="1" id="-10" name="Set value" sid="475746357302933" type="emitter">
-                            <param id="0" name="Instance variable">audioTag</param>
-                            <param id="1" name="Value">&quot;l0_a_i5_1&quot;</param>
-                        </action>
-                        <action disabled="1" id="34" name="Schedule next play" sid="741224673863507" type="Audio">
-                            <param id="0" name="Time">Audio.CurrentTime+0.05</param>
-                        </action>
-                        <action disabled="1" id="28" name="Play at object (by name)" sid="665904945210480" type="Audio">
-                            <param id="0" name="Folder">1</param>
-                            <param id="1" name="Audio file name">emitter.audioTag</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="4" name="Object">emitter</param>
-                            <param id="5" name="Inner angle">360</param>
-                            <param id="6" name="Outer angle">360</param>
-                            <param id="7" name="Outer gain">0</param>
-                            <param id="8" name="Tag (optional)">emitter.audioTag</param>
-                        </action>
-                        <action disabled="1" id="23" name="Seek to" sid="162615202798695" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="Position">masterTime</param>
-                        </action>
-                        <action id="-3" name="Set position" sid="236186676108766" type="emitter">
-                            <param id="0" name="X">player.X + varX</param>
-                            <param id="1" name="Y">player.Y - varY</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="972218124633859" type="emitter">
-                            <param id="0" name="Instance variable">active</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="2" name="Set muted" sid="189398654736755" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="State">1</param>
-                        </action>
-                    </actions>
+                    <actions />
                 </event-block>
             </sub-events>
         </event-block>
         <variable constant="0" name="masterTime" sid="297606518208434" static="0" type="number">0</variable>
-        <event-block sid="855114680913091">
-            <conditions>
-                <condition id="-8" name="Is boolean instance variable set" sid="630067307577999" type="emitter">
-                    <param id="0" name="Instance variable">master</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Set value" sid="921913360622701" type="System">
-                    <param id="0" name="Variable">masterTime</param>
-                    <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
-                </action>
-                <action id="14" name="Log" sid="647938337043841" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">masterTime</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block disabled="1" sid="871908020136679">
-            <conditions>
-                <condition id="1" name="Preloads complete" sid="377352177510523" type="Audio" />
-                <condition id="-4" name="Trigger once while true" sid="211302070637851" type="System" />
-            </conditions>
-            <actions>
-                <action id="0" name="Call function" sid="703216459929504" type="Function">
-                    <param id="0" name="Name">&quot;spawn first emitter&quot;</param>
-                    <param id="1" name="Parameter {n}"></param>
-                </action>
-            </actions>
-        </event-block>
     </events>
 </c2eventsheet>

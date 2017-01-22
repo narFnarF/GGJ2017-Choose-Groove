@@ -120,11 +120,12 @@
         <object-type name="emitter" sid="488779548420966">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="id" sid="911060681512082" type="number" />
+                <instance-variable name="blerh" sid="911060681512082" type="number" />
                 <instance-variable name="audioTag" sid="586577689857073" type="string" />
                 <instance-variable name="solo" sid="203292753668318" type="boolean" />
-                <instance-variable name="master" sid="832921213284024" type="boolean" />
+                <instance-variable name="blerh2" sid="832921213284024" type="boolean" />
                 <instance-variable name="active" sid="264534898726959" type="boolean" />
+                <instance-variable name="picked" sid="297827916530739" type="boolean" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Pin" sid="191021215744434">
