@@ -537,6 +537,5 @@
                 </event-block>
             </sub-events>
         </event-block>
-        <variable constant="0" name="masterTime" sid="297606518208434" static="0" type="number">0</variable>
     </events>
 </c2eventsheet>
