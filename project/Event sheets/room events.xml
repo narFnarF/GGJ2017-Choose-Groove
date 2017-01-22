@@ -81,167 +81,207 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="191493947246880">
-            <conditions>
-                <condition id="-2" name="On start of layout" sid="493973392171880" type="System" />
-            </conditions>
-            <actions>
-                <action id="26" name="Set listener object" sid="294707170655397" type="Audio">
-                    <param id="0" name="Object">player</param>
-                </action>
-            </actions>
+        <event-group description="" sid="629028763288617" title="preparing stuff">
             <sub-events>
-                <event-block sid="971711231016664">
+                <event-block sid="191493947246880">
                     <conditions>
-                        <condition id="-11" name="For Each" sid="693298932039081" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
+                        <condition id="-2" name="On start of layout" sid="493973392171880" type="System" />
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="558492543041072" type="emitter">
-                            <param id="0" name="Instance variable">audioTag</param>
-                            <param id="1" name="Value">emitterLabel.Text</param>
-                        </action>
-                        <action id="9" name="Preload (by name)" sid="381187454094644" type="Audio">
-                            <param id="0" name="Folder">1</param>
-                            <param id="1" name="Audio file name">emitter.audioTag</param>
-                        </action>
-                        <action id="14" name="Log" sid="457688751872085" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;preload &quot; &amp; emitter.audioTag</param>
+                        <action id="26" name="Set listener object" sid="294707170655397" type="Audio">
+                            <param id="0" name="Object">player</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="974328618305395">
+                        <event-block sid="971711231016664">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="109366151104479" type="emitterLabel">
-                                    <param id="0" name="Instance variable">level</param>
-                                    <param id="1" name="Comparison">1</param>
-                                    <param id="2" name="Value">currentLevel</param>
+                                <condition id="-11" name="For Each" sid="693298932039081" type="System">
+                                    <param id="0" name="Object">emitter</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Destroy" sid="730046044864638" type="emitter" />
+                                <action id="-10" name="Set value" sid="558492543041072" type="emitter">
+                                    <param id="0" name="Instance variable">audioTag</param>
+                                    <param id="1" name="Value">emitterLabel.Text</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>delete ceux des autres levels (pour pas loader mille choses inutiles)</comment>
+                                <event-block sid="974328618305395">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="109366151104479" type="emitterLabel">
+                                            <param id="0" name="Instance variable">level</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Value">currentLevel</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="730046044864638" type="emitter" />
+                                    </actions>
+                                </event-block>
+                                <comment>preload tout ce qui est requis pour ce level</comment>
+                                <event-block sid="898475758295351">
+                                    <conditions />
+                                    <actions>
+                                        <action id="9" name="Preload (by name)" sid="381187454094644" type="Audio">
+                                            <param id="0" name="Folder">1</param>
+                                            <param id="1" name="Audio file name">emitter.audioTag</param>
+                                        </action>
+                                        <action id="14" name="Log" sid="457688751872085" type="Browser">
+                                            <param id="0" name="Type">0</param>
+                                            <param id="1" name="Message">&quot;preload &quot; &amp; emitter.audioTag</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="658521231797683">
+                    <conditions>
+                        <condition id="1" name="Preloads complete" sid="255343389943841" type="Audio" />
+                        <condition id="-4" name="Trigger once while true" sid="960864757838555" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="899491116344913" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;preload complete&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="744351176855594">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="821575369087289" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="28" name="Play at object (by name)" sid="514877135283410" type="Audio">
+                                    <param id="0" name="Folder">1</param>
+                                    <param id="1" name="Audio file name">emitter.audioTag</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="4" name="Object">emitter</param>
+                                    <param id="5" name="Inner angle">360</param>
+                                    <param id="6" name="Outer angle">360</param>
+                                    <param id="7" name="Outer gain">0</param>
+                                    <param id="8" name="Tag (optional)">emitter.audioTag</param>
+                                </action>
+                                <action id="2" name="Set muted" sid="456009809475526" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="628756339080839">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Call function" sid="404687085323492" type="Function">
+                                    <param id="0" name="Name">&quot;spawn first emitter&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
                             </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
             </sub-events>
-        </event-block>
-        <event-block sid="658521231797683">
+        </event-group>
+        <event-block sid="417438558574382">
             <conditions>
-                <condition id="1" name="Preloads complete" sid="255343389943841" type="Audio" />
-                <condition id="-4" name="Trigger once while true" sid="960864757838555" type="System" />
-            </conditions>
-            <actions>
-                <action id="14" name="Log" sid="899491116344913" type="Browser">
-                    <param id="0" name="Type">0</param>
-                    <param id="1" name="Message">&quot;preload complete&quot;</param>
-                </action>
-            </actions>
-            <sub-events>
-                <event-block sid="744351176855594">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="821575369087289" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="28" name="Play at object (by name)" sid="514877135283410" type="Audio">
-                            <param id="0" name="Folder">1</param>
-                            <param id="1" name="Audio file name">emitter.audioTag</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="4" name="Object">emitter</param>
-                            <param id="5" name="Inner angle">360</param>
-                            <param id="6" name="Outer angle">360</param>
-                            <param id="7" name="Outer gain">0</param>
-                            <param id="8" name="Tag (optional)">emitter.audioTag</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-block>
-        <event-block sid="316617317847663">
-            <conditions>
-                <condition id="0" name="On collision with another object" sid="515521823437352" type="player">
-                    <param id="0" name="Object">emitter</param>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="445973519554411" type="emitter">
+                    <param id="0" name="Instance variable">active</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-4" name="Set position to another object" sid="771411248004055" type="emitter">
-                    <param id="0" name="Object">player</param>
-                    <param id="1" name="Image point (optional)">0</param>
-                </action>
-                <action behavior="Pin" id="0" name="Pin to object" sid="464729415974102" type="emitter">
-                    <param id="0" name="Pin to">player</param>
-                    <param id="1" name="Mode">1</param>
-                </action>
-                <action id="0" name="Play" sid="392265650804152" type="Audio">
-                    <param id="0" name="Audio file">Pickup_Coin7</param>
-                    <param id="2" name="Loop">0</param>
-                    <param id="3" name="Volume">-20</param>
-                    <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
-                </action>
-                <action id="3" name="Set volume" sid="933864095258586" type="Audio">
-                    <param id="0" name="Tag">emitter.audioTag</param>
-                    <param id="1" name="dB">-20</param>
+                <action id="-2" name="Set Y" sid="808773242930784" type="emitter">
+                    <param id="0" name="Y">player.Y + 250</param>
                 </action>
             </actions>
+        </event-block>
+        <event-group description="" sid="168705400442144" title="collisions &amp; attach &amp; destroy &amp; stop audio">
             <sub-events>
-                <comment>Remember: On collision is triggered only ONCE!</comment>
-                <event-block sid="475461656207505">
+                <event-block sid="316617317847663">
                     <conditions>
-                        <condition id="-19" name="Pick all" sid="281035015895098" type="System">
+                        <condition id="0" name="On collision with another object" sid="515521823437352" type="player">
                             <param id="0" name="Object">emitter</param>
                         </condition>
-                        <condition id="-8" name="Is boolean instance variable set" sid="705165467485919" type="emitter">
-                            <param id="0" name="Instance variable">active</param>
-                        </condition>
-                        <condition id="1" inverted="1" name="Is overlapping another object" sid="718319769808438" type="emitter">
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="771411248004055" type="emitter">
                             <param id="0" name="Object">player</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="259018630203354" type="emitter" />
-                    </actions>
-                </event-block>
-                <event-block sid="952054240373380">
-                    <conditions />
-                    <actions>
-                        <action disabled="1" id="11" name="Set collisions enabled" sid="715852093403407" type="emitter">
-                            <param id="0" name="Collisions">0</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="464729415974102" type="emitter">
+                            <param id="0" name="Pin to">player</param>
+                            <param id="1" name="Mode">1</param>
+                        </action>
+                        <action id="0" name="Play" sid="392265650804152" type="Audio">
+                            <param id="0" name="Audio file">Pickup_Coin7</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">-20</param>
+                            <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
+                        </action>
+                        <action id="3" name="Set volume" sid="933864095258586" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="dB">-20</param>
                         </action>
                     </actions>
+                    <sub-events>
+                        <comment>Remember: On collision is triggered only ONCE!</comment>
+                        <event-block sid="475461656207505">
+                            <conditions>
+                                <condition id="-19" name="Pick all" sid="281035015895098" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                                <condition id="-8" name="Is boolean instance variable set" sid="705165467485919" type="emitter">
+                                    <param id="0" name="Instance variable">active</param>
+                                </condition>
+                                <condition id="1" inverted="1" name="Is overlapping another object" sid="718319769808438" type="emitter">
+                                    <param id="0" name="Object">player</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="259018630203354" type="emitter" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="952054240373380">
+                            <conditions />
+                            <actions>
+                                <action disabled="1" id="11" name="Set collisions enabled" sid="715852093403407" type="emitter">
+                                    <param id="0" name="Collisions">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="211026577087959">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="190699527701444" type="emitter">
+                                    <param id="0" name="Instance variable">solo</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Wait" sid="981806724743713" type="System">
+                                    <param id="0" name="Seconds">1.0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="276755266456660" type="Function">
+                                    <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
-                <event-block sid="211026577087959">
+                <event-block sid="250561156914325">
                     <conditions>
-                        <condition id="-8" name="Is boolean instance variable set" sid="190699527701444" type="emitter">
-                            <param id="0" name="Instance variable">solo</param>
-                        </condition>
+                        <condition id="-19" name="On destroyed" sid="315049947018790" type="emitter" />
                     </conditions>
                     <actions>
-                        <action id="-16" name="Wait" sid="981806724743713" type="System">
-                            <param id="0" name="Seconds">1.0</param>
-                        </action>
-                        <action id="0" name="Call function" sid="276755266456660" type="Function">
-                            <param id="0" name="Name">&quot;spawn 2 emitters&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
+                        <action id="6" name="Stop" sid="594103173910800" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
                         </action>
                     </actions>
                 </event-block>
             </sub-events>
-        </event-block>
-        <event-block sid="250561156914325">
-            <conditions>
-                <condition id="-19" name="On destroyed" sid="315049947018790" type="emitter" />
-            </conditions>
-            <actions>
-                <action id="6" name="Stop" sid="594103173910800" type="Audio">
-                    <param id="0" name="Tag">emitter.audioTag</param>
-                </action>
-            </actions>
-        </event-block>
+        </event-group>
         <event-block sid="284693592774187">
             <conditions>
                 <condition id="0" name="On function" sid="186178203259564" type="Function">
@@ -252,38 +292,36 @@
             <sub-events>
                 <variable constant="0" name="varX" sid="136279378594740" static="0" type="number">300</variable>
                 <variable constant="0" name="varY" sid="555240108102543" static="0" type="number">200</variable>
-                <comment>first</comment>
                 <event-block sid="562684034166768">
-                    <conditions />
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="380468454650423" type="emitterLabel">
+                            <param id="0" name="Instance variable">section</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="160659150854903" type="emitterLabel">
+                            <param id="0" name="Instance variable">instrument</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="920048034647319" type="emitterLabel">
+                            <param id="0" name="Instance variable">variation</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
                     <actions>
-                        <action id="-3" name="Create object" sid="809143642667832" type="System">
-                            <param id="0" name="Object to create">emitter</param>
-                            <param id="1" name="Layer">&quot;emiters&quot;</param>
-                            <param id="2" name="X">player.X - varX</param>
-                            <param id="3" name="Y">player.Y - varY</param>
+                        <action id="-3" name="Set position" sid="745187589368315" type="emitter">
+                            <param id="0" name="X">player.X + varX</param>
+                            <param id="1" name="Y">player.Y + varY</param>
                         </action>
-                        <action id="-13" name="Set boolean" sid="277477628110719" type="emitter">
-                            <param id="0" name="Instance variable">solo</param>
+                        <action id="-13" name="Set boolean" sid="961037387660009" type="emitter">
+                            <param id="0" name="Instance variable">active</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action id="-13" name="Set boolean" sid="738752696532134" type="emitter">
-                            <param id="0" name="Instance variable">master</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="149788988223636" type="emitter">
-                            <param id="0" name="Instance variable">audioTag</param>
-                            <param id="1" name="Value">&quot;l0_a_i3_1&quot;</param>
-                        </action>
-                        <action id="28" name="Play at object (by name)" sid="737064081939569" type="Audio">
-                            <param id="0" name="Folder">1</param>
-                            <param id="1" name="Audio file name">emitter.audioTag</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="4" name="Object">emitter</param>
-                            <param id="5" name="Inner angle">360</param>
-                            <param id="6" name="Outer angle">360</param>
-                            <param id="7" name="Outer gain">0</param>
-                            <param id="8" name="Tag (optional)">emitter.audioTag</param>
+                        <action id="2" name="Set muted" sid="396630798726620" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="State">1</param>
                         </action>
                     </actions>
                 </event-block>

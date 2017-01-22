@@ -20,5 +20,14 @@
                 </action>
             </actions>
         </event-block>
+        <event-block sid="902255100086010">
+            <conditions />
+            <actions>
+                <action id="-4" name="Set position to another object" sid="481945346651250" type="emitterLabel">
+                    <param id="0" name="Object">emitter</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

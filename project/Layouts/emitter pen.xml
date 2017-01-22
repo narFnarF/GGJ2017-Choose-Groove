@@ -33,7 +33,7 @@
                     <properties>
                         <text>asdfasdfasd</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-19,400,0</font>
+                        <font>Arial,-15,400,0</font>
                         <color>0,0,0</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -66,7 +66,7 @@
                     <properties>
                         <text>asdfasdfasd</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-19,400,0</font>
+                        <font>Arial,-15,400,0</font>
                         <color>0,0,0</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -83,8 +83,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>253</x>
-                        <y>59</y>
+                        <x>215</x>
+                        <y>52</y>
                         <z>0</z>
                         <width>107</width>
                         <height>42</height>
@@ -99,7 +99,7 @@
                     <properties>
                         <text>asdfasdfasd</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-19,400,0</font>
+                        <font>Arial,-15,400,0</font>
                         <color>0,0,0</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -116,8 +116,107 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>433</x>
-                        <y>59</y>
+                        <x>361</x>
+                        <y>48</y>
+                        <z>0</z>
+                        <width>107</width>
+                        <height>42</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="emitterLabel" uid="14">
+                    <properties>
+                        <text>asdfasdfasd</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-15,400,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Center</vertical-alignment>
+                        <hotspot>Center</hotspot>
+                        <wrapping>Character</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <instance-variables>
+                        <level>0</level>
+                        <section>2</section>
+                        <instrument>6</instrument>
+                        <variation>1</variation>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>79</x>
+                        <y>121</y>
+                        <z>0</z>
+                        <width>107</width>
+                        <height>42</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="emitterLabel" uid="17">
+                    <properties>
+                        <text>asdfasdfasd</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-15,400,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Center</vertical-alignment>
+                        <hotspot>Center</hotspot>
+                        <wrapping>Character</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <instance-variables>
+                        <level>0</level>
+                        <section>2</section>
+                        <instrument>4</instrument>
+                        <variation>1</variation>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>214</x>
+                        <y>125</y>
+                        <z>0</z>
+                        <width>107</width>
+                        <height>42</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="emitterLabel" uid="18">
+                    <properties>
+                        <text>asdfasdfasd</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-15,400,0</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Center</vertical-alignment>
+                        <hotspot>Center</hotspot>
+                        <wrapping>Character</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <instance-variables>
+                        <level>9</level>
+                        <section>2</section>
+                        <instrument>6</instrument>
+                        <variation>1</variation>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>84</x>
+                        <y>191</y>
                         <z>0</z>
                         <width>107</width>
                         <height>42</height>

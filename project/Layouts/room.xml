@@ -15,7 +15,7 @@
     <layers>
         <layer name="bg" sid="181242873717620">
             <initially-visible>1</initially-visible>
-            <background-color>255,255,255</background-color>
+            <background-color>102,0,51</background-color>
             <transparent>0</transparent>
             <parallax>
                 <x>1</x>
@@ -64,7 +64,28 @@
             <use-render-cells>0</use-render-cells>
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
-            <instances />
+            <instances>
+                <instance type="bg" uid="19">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <hotspot>Top-left</hotspot>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-366</x>
+                        <y>-318</y>
+                        <z>0</z>
+                        <width>2467</width>
+                        <height>1351</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>0.5</opacity>
+                    </world>
+                </instance>
+            </instances>
             <effects />
         </layer>
         <layer name="player" sid="676420123236944">
