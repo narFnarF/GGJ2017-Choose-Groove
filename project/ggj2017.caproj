@@ -223,6 +223,8 @@
     <sounds-folder>
         <file name="Pickup_Coin7.m4a" />
         <file name="Pickup_Coin7.ogg" />
+        <file name="Pickup.m4a" />
+        <file name="Pickup.ogg" />
     </sounds-folder>
     <music-folder>
         <file name="Kick-TiSh_01-01.m4a" />
