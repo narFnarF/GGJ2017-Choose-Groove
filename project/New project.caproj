@@ -24,6 +24,7 @@
         <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
     </used-behaviors>
     <used-effects />
@@ -99,6 +100,29 @@
             </object-type>
             <object-type name="third" sid="744386221039901">
                 <plugin id="TextBox" />
+            </object-type>
+        </object-folder>
+        <object-folder name="images to cover">
+            <object-type name="img2" sid="564766595936074">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Sine" sid="632129750520164">
+                        <behavior id="Sin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="485453221719405" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\narF\Downloads\anna-marinenko-nature-sound-waves-designboom-08.jpg" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="img1" sid="427078317744163">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="848901046562449" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\narF\Downloads\SoundWaves.jpeg" />
+                    </animation>
+                </animation-folder>
             </object-type>
         </object-folder>
         <object-type name="player" sid="854402448995849">
