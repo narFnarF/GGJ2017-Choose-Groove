@@ -580,11 +580,13 @@
                             <param id="1" name="Value">1</param>
                         </action>
                         <action id="0" name="Play" sid="514651401203410" type="Audio">
-                            <param id="0" name="Audio file">Kick-TiSh_01-01</param>
+                            <param id="0" name="Audio file">Sample1-TiSh_01-01</param>
                             <param id="2" name="Loop">0</param>
                             <param id="3" name="Volume">0</param>
                             <param id="1" name="Tag (optional)">&quot;bridge&quot;</param>
                         </action>
+                        <action id="-9" name="Destroy" sid="126362315761308" type="img1" />
+                        <action id="-9" name="Destroy" sid="793626946963103" type="img2" />
                     </actions>
                     <sub-events>
                         <event-block sid="924697045423823">
@@ -826,5 +828,27 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-block sid="559437144632692">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="268191765020575" type="Keyboard">
+                    <param id="0" name="Key">82 (R)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="317920459609525" type="System">
+                    <param id="0" name="Variable">currentLevel</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="748785643901794" type="System">
+                    <param id="0" name="Variable">currentSection</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="535611505479041" type="System">
+                    <param id="0" name="Variable">currentWave</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="645682078509953" type="System" />
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>
