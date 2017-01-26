@@ -108,35 +108,33 @@
                                     <param id="1" name="Value">emitterLabel.Text</param>
                                 </action>
                             </actions>
-                            <sub-events>
-                                <comment>delete ceux des autres levels (pour pas loader mille choses inutiles)</comment>
-                                <event-block sid="974328618305395">
-                                    <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="109366151104479" type="emitterLabel">
-                                            <param id="0" name="Instance variable">level</param>
-                                            <param id="1" name="Comparison">1</param>
-                                            <param id="2" name="Value">currentLevel</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-9" name="Destroy" sid="730046044864638" type="emitter" />
-                                    </actions>
-                                </event-block>
-                                <comment>preload tout ce qui est requis pour ce level</comment>
-                                <event-block sid="898475758295351">
-                                    <conditions />
-                                    <actions>
-                                        <action id="9" name="Preload (by name)" sid="381187454094644" type="Audio">
-                                            <param id="0" name="Folder">1</param>
-                                            <param id="1" name="Audio file name">emitter.audioTag</param>
-                                        </action>
-                                        <action id="14" name="Log" sid="457688751872085" type="Browser">
-                                            <param id="0" name="Type">0</param>
-                                            <param id="1" name="Message">&quot;preload &quot; &amp; emitter.audioTag</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
+                        </event-block>
+                        <event-block sid="710034705656034">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Call function" sid="938135749839616" type="Function">
+                                    <param id="0" name="Name">&quot;destroy some emitters&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>preload tout ce qui est requis pour ce level</comment>
+                        <event-block sid="320644417987045">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="202099706428789" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="9" name="Preload (by name)" sid="303243606015948" type="Audio">
+                                    <param id="0" name="Folder">1</param>
+                                    <param id="1" name="Audio file name">emitter.audioTag</param>
+                                </action>
+                                <action id="14" name="Log" sid="609212000914174" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;preload &quot; &amp; emitter.audioTag</param>
+                                </action>
+                            </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -156,6 +154,11 @@
                             <conditions>
                                 <condition id="-11" name="For Each" sid="821575369087289" type="System">
                                     <param id="0" name="Object">emitter</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="641222521186379" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentSection</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -184,6 +187,80 @@
                                     <param id="1" name="Parameter {n}"></param>
                                 </action>
                             </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>TODO: Investigate why, since I added this function, there&apos;s a desync of 0.9 seconds every tick.</comment>
+                <event-block sid="414250334468446">
+                    <conditions>
+                        <condition id="0" name="On function" sid="558283363448159" type="Function">
+                            <param id="0" name="Name">&quot;destroy some emitters&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>destroy all those of other levels</comment>
+                        <event-block sid="853529172560538">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="529029881807573" type="emitterLabel">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">currentLevel</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="597335139229036" type="emitter" />
+                            </actions>
+                        </event-block>
+                        <comment>Randomly destroy 1 variation per instrument per section</comment>
+                        <event-block sid="790153827877980">
+                            <conditions>
+                                <condition id="-10" name="For" sid="315289211210471" type="System">
+                                    <param id="0" name="Name">&quot;sections&quot;</param>
+                                    <param id="1" name="Start index">1</param>
+                                    <param id="2" name="End index">Function.Call(&quot;max sections&quot;, currentLevel)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="930830184339769">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="136793510213653" type="System">
+                                            <param id="0" name="Name">&quot;instruments&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">Function.Call(&quot;max instruments&quot;, currentLevel, loopindex(&quot;sections&quot;))</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="14" name="Log" sid="627939605367927" type="Browser">
+                                            <param id="0" name="Type">0</param>
+                                            <param id="1" name="Message">&quot;section &quot; &amp; loopindex(&quot;sections&quot;) &amp; &quot;  instrument &quot; &amp; loopindex(&quot;instruments&quot;)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="614779815190049">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="643901261265329" type="emitterLabel">
+                                                    <param id="0" name="Instance variable">section</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">loopindex(&quot;sections&quot;)</param>
+                                                </condition>
+                                                <condition id="-7" name="Compare instance variable" sid="398063711183859" type="emitterLabel">
+                                                    <param id="0" name="Instance variable">instrument</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">loopindex(&quot;instruments&quot;)</param>
+                                                </condition>
+                                                <condition id="-16" name="Pick random instance" sid="594657511882388" type="System">
+                                                    <param id="0" name="Object">emitter</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Destroy" sid="844368392696821" type="emitter" />
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -823,7 +900,7 @@
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="474524811677836">
+                        <event-block disabled="1" sid="474524811677836">
                             <conditions>
                                 <condition id="-6" name="Every X seconds" sid="875379983964006" type="System">
                                     <param id="0" name="Interval (seconds)">1</param>
@@ -868,47 +945,6 @@
                             <param id="1" name="dB">pickedVolume</param>
                         </action>
                     </actions>
-                </event-block>
-            </sub-events>
-        </event-block>
-        <comment>TODO</comment>
-        <event-block sid="414250334468446">
-            <conditions>
-                <condition id="0" name="On function" sid="558283363448159" type="Function">
-                    <param id="0" name="Name">&quot;destroy some emitters&quot;</param>
-                </condition>
-            </conditions>
-            <actions />
-            <sub-events>
-                <event-block sid="790153827877980">
-                    <conditions>
-                        <condition id="-10" name="For" sid="315289211210471" type="System">
-                            <param id="0" name="Name">&quot;sections&quot;</param>
-                            <param id="1" name="Start index">1</param>
-                            <param id="2" name="End index">Function.Call(&quot;max sections&quot;, currentLevel)</param>
-                        </condition>
-                    </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="930830184339769">
-                            <conditions>
-                                <condition id="-10" name="For" sid="136793510213653" type="System">
-                                    <param id="0" name="Name">&quot;instruments&quot;</param>
-                                    <param id="1" name="Start index">1</param>
-                                    <param id="2" name="End index">Function.Call(&quot;max instruments&quot;, currentLevel, loopindex(&quot;sections&quot;))</param>
-                                </condition>
-                                <condition id="-19" name="Pick all" sid="780599206947877" type="System">
-                                    <param id="0" name="Object">emitter</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="14" name="Log" sid="627939605367927" type="Browser">
-                                    <param id="0" name="Type">0</param>
-                                    <param id="1" name="Message">&quot;section &quot; &amp; loopindex(&quot;sections&quot;) &amp; &quot;  instrument &quot; &amp; loopindex(&quot;instruments&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
                 </event-block>
             </sub-events>
         </event-block>
