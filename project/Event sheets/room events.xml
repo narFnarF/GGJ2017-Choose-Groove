@@ -5,6 +5,7 @@
     <events>
         <include>emitter pen events</include>
         <comment>settings</comment>
+        <variable constant="1" name="MAX_SECTIONs" sid="718732771441661" static="0" type="number">2</variable>
         <variable constant="1" name="MAX_INSTRUMENTS" sid="544170108094473" static="0" type="number">7</variable>
         <variable constant="1" name="MAX_VARIATIONS" sid="902463580071685" static="0" type="number">3</variable>
         <comment>tracking variables</comment>
@@ -221,7 +222,7 @@
                         </action>
                         <action id="3" name="Set volume" sid="933864095258586" type="Audio">
                             <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="dB">-10</param>
+                            <param id="1" name="dB">-15</param>
                         </action>
                         <action id="-9" name="Set value" sid="807805727247375" type="System">
                             <param id="0" name="Variable">collidedInstrument</param>
@@ -722,7 +723,7 @@
                                 </action>
                                 <action id="14" name="Log" sid="798100940639803" type="Browser">
                                     <param id="0" name="Type">0</param>
-                                    <param id="1" name="Message">&quot;Return &quot; &amp; return</param>
+                                    <param id="1" name="Message">&quot;Desync=&quot; &amp; return</param>
                                 </action>
                                 <action id="1" name="Set return value" sid="747415157309300" type="Function">
                                     <param id="0" name="Value">return</param>
@@ -812,13 +813,218 @@
                         <event-block sid="948940738527205">
                             <conditions>
                                 <condition id="0" name="On key pressed" sid="465699767220446" type="Keyboard">
-                                    <param id="0" name="Key">32 (Space)</param>
+                                    <param id="0" name="Key">32 (Espace)</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="0" name="Call function" sid="944663115214364" type="Function">
                                     <param id="0" name="Name">&quot;resync all track&quot;</param>
                                     <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="474524811677836">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="875379983964006" type="System">
+                                    <param id="0" name="Interval (seconds)">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="783299071387022" type="Function">
+                                    <param id="0" name="Name">&quot;destroy some emitters&quot;</param>
+                                    <param id="1" name="Parameter {n}">1{###}2</param>
+                                </action>
+                                <action id="14" name="Log" sid="876355443693015" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;returned : &quot; &amp; Function.ReturnValue</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="626247830692025">
+            <conditions>
+                <condition id="0" name="On function" sid="503977289907699" type="Function">
+                    <param id="0" name="Name">&quot;adjust picked volume&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="pickedVolume" sid="830511671003270" static="0" type="number">-15</variable>
+                <event-block sid="606451439589879">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="641456180337356" type="emitter">
+                            <param id="0" name="Object">player</param>
+                        </condition>
+                        <condition id="-11" name="For Each" sid="651739191740405" type="System">
+                            <param id="0" name="Object">emitter</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Set volume" sid="845261243530127" type="Audio">
+                            <param id="0" name="Tag">emitter.audioTag</param>
+                            <param id="1" name="dB">pickedVolume</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>TODO</comment>
+        <event-block sid="414250334468446">
+            <conditions>
+                <condition id="0" name="On function" sid="558283363448159" type="Function">
+                    <param id="0" name="Name">&quot;destroy some emitters&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="790153827877980">
+                    <conditions>
+                        <condition id="-10" name="For" sid="315289211210471" type="System">
+                            <param id="0" name="Name">&quot;sections&quot;</param>
+                            <param id="1" name="Start index">1</param>
+                            <param id="2" name="End index">Function.Call(&quot;max sections&quot;, currentLevel)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="930830184339769">
+                            <conditions>
+                                <condition id="-10" name="For" sid="136793510213653" type="System">
+                                    <param id="0" name="Name">&quot;instruments&quot;</param>
+                                    <param id="1" name="Start index">1</param>
+                                    <param id="2" name="End index">Function.Call(&quot;max instruments&quot;, currentLevel, loopindex(&quot;sections&quot;))</param>
+                                </condition>
+                                <condition id="-19" name="Pick all" sid="780599206947877" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="627939605367927" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;section &quot; &amp; loopindex(&quot;sections&quot;) &amp; &quot;  instrument &quot; &amp; loopindex(&quot;instruments&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="177256076913871" title="Useful functions">
+            <sub-events>
+                <comment>Returns the number of sections for a level.</comment>
+                <event-block sid="837407554257696">
+                    <conditions>
+                        <condition id="0" name="On function" sid="555918568720989" type="Function">
+                            <param id="0" name="Name">&quot;max sections&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="level" sid="674719260788188" static="0" type="number">0</variable>
+                        <event-block sid="441545282435225">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="256794845283207" type="System">
+                                    <param id="0" name="Variable">level</param>
+                                    <param id="1" name="Value">Function.Param(0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="350581530332964">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="421855399873427" type="emitterLabel">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">level</param>
+                                </condition>
+                                <condition id="-20" name="Pick highest/lowest" sid="189131087485804" type="emitterLabel">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Instance variable">section</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action disabled="1" id="14" name="Log" sid="637875295210441" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;max section = &quot; &amp; emitterLabel.section</param>
+                                </action>
+                                <action id="1" name="Set return value" sid="521798872977826" type="Function">
+                                    <param id="0" name="Value">emitterLabel.section</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="721623922702540">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="505016287374651" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Set return value" sid="661820373622281" type="Function">
+                                    <param id="0" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Returns the number of instrument in a section.</comment>
+                <event-block sid="909371043154803">
+                    <conditions>
+                        <condition id="0" name="On function" sid="908703787107036" type="Function">
+                            <param id="0" name="Name">&quot;max instruments&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="level" sid="682156630740982" static="0" type="number">0</variable>
+                        <variable constant="0" name="section" sid="548586214657789" static="0" type="number">0</variable>
+                        <event-block sid="154480958223997">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="926030236907887" type="System">
+                                    <param id="0" name="Variable">level</param>
+                                    <param id="1" name="Value">Function.Param(0)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="561140347372591" type="System">
+                                    <param id="0" name="Variable">section</param>
+                                    <param id="1" name="Value">Function.Param(1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="906419405001058">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="184855945399653" type="emitterLabel">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">level</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="187791399635216" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">section</param>
+                                </condition>
+                                <condition id="-20" name="Pick highest/lowest" sid="123186576082156" type="emitterLabel">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Instance variable">instrument</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action disabled="1" id="14" name="Log" sid="736534531316914" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;max instrument = &quot; &amp; emitterLabel.instrument</param>
+                                </action>
+                                <action id="1" name="Set return value" sid="238637879173515" type="Function">
+                                    <param id="0" name="Value">emitterLabel.instrument</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="144332896796870">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="663807283932864" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Set return value" sid="144741749505035" type="Function">
+                                    <param id="0" name="Value">0</param>
                                 </action>
                             </actions>
                         </event-block>

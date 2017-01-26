@@ -18,6 +18,10 @@
                     <param id="0" name="Where">0</param>
                     <param id="1" name="Object">emitter</param>
                 </action>
+                <action id="-10" name="Set value" sid="622447800966249" type="emitter">
+                    <param id="0" name="Instance variable">audioTag</param>
+                    <param id="1" name="Value">emitterLabel.Text</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="902255100086010">
@@ -26,6 +30,28 @@
                 <action id="-4" name="Set position to another object" sid="481945346651250" type="emitterLabel">
                     <param id="0" name="Object">emitter</param>
                     <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="475977030122984">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="518759189566758" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">emitter</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="125557015712633" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;clicked &quot; &amp; emitter.audioTag</param>
+                </action>
+                <action id="7" name="Play (by name)" sid="581662914300534" type="Audio">
+                    <param id="0" name="Folder">1</param>
+                    <param id="1" name="Audio file name">emitter.audioTag</param>
+                    <param id="3" name="Loop">0</param>
+                    <param id="4" name="Volume">0</param>
+                    <param id="2" name="Tag (optional)">emitter.audioTag</param>
                 </action>
             </actions>
         </event-block>

@@ -916,7 +916,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -949,7 +949,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -982,11 +982,11 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="emitterLabel" uid="45">
+                <instance type="emitterLabel" uid="0">
                     <properties>
                         <text>l1_s2_i1_1</text>
                         <initial-visibility>Visible</initial-visibility>
@@ -1609,7 +1609,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -1642,13 +1642,13 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
                 <instance type="emitterLabel" uid="65">
                     <properties>
-                        <text>l1_s1_i2_3</text>
+                        <text>l1_s1_i7_3</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-15,400,0</font>
                         <color>0,0,0</color>
@@ -1675,7 +1675,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -1694,7 +1694,7 @@
                     <instance-variables>
                         <level>1</level>
                         <section>2</section>
-                        <instrument>7</instrument>
+                        <instrument>8</instrument>
                         <variation>1</variation>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
@@ -1708,7 +1708,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -1727,7 +1727,7 @@
                     <instance-variables>
                         <level>1</level>
                         <section>2</section>
-                        <instrument>7</instrument>
+                        <instrument>8</instrument>
                         <variation>2</variation>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
@@ -1741,7 +1741,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
@@ -1760,7 +1760,7 @@
                     <instance-variables>
                         <level>1</level>
                         <section>2</section>
-                        <instrument>7</instrument>
+                        <instrument>8</instrument>
                         <variation>3</variation>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
@@ -1774,7 +1774,7 @@
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
-                        <angle>-0.038791116</angle>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
