@@ -705,13 +705,13 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Call function" sid="981035364702624" type="Function">
+                        <action disabled="1" id="0" name="Call function" sid="981035364702624" type="Function">
                             <param id="0" name="Name">&quot;resync all track&quot;</param>
                             <param id="1" name="Parameter {n}"></param>
                         </action>
                         <action id="14" name="Log" sid="595241227571872" type="Browser">
                             <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;function Spawn 2&quot;</param>
+                            <param id="1" name="Message">&quot;bridge ended&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -724,16 +724,28 @@
                         <condition id="0" name="On function" sid="784554178051741" type="Function">
                             <param id="0" name="Name">&quot;resync all track&quot;</param>
                         </condition>
-                        <condition id="-11" name="For Each" sid="731728221789462" type="System">
-                            <param id="0" name="Object">emitter</param>
-                        </condition>
                     </conditions>
                     <actions>
-                        <action id="23" name="Seek to" sid="847830889881632" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="Position">0</param>
+                        <action id="14" name="Log" sid="631610482645733" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Started resync&quot;</param>
                         </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="944464678082336">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="731728221789462" type="System">
+                                    <param id="0" name="Object">emitter</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="23" name="Seek to" sid="847830889881632" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="Position">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>returns the difference between the earliest and latest music track</comment>
                 <event-block sid="607098649649864">
@@ -824,35 +836,27 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="760922123539612">
+                <comment>At end of a loop</comment>
+                <event-block sid="278820410427462">
                     <conditions>
-                        <condition id="-6" name="Every X seconds" sid="591883616693967" type="System">
-                            <param id="0" name="Interval (seconds)">1.0</param>
+                        <condition id="0" name="On function" sid="887435978693490" type="Function">
+                            <param id="0" name="Name">&quot;message .loopRestart&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action disabled="1" id="0" name="Call function" sid="515651735364747" type="Function">
-                            <param id="0" name="Name">&quot;desync delta&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
+                        <action id="14" name="Log" sid="670368761444603" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Loop restarted&quot;</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <variable constant="0" name="delta" sid="762448348701774" static="0" type="number">0</variable>
-                        <event-block sid="645553173823798">
-                            <conditions />
-                            <actions>
-                                <action id="-9" name="Set value" sid="827177489820156" type="System">
-                                    <param id="0" name="Variable">delta</param>
-                                    <param id="1" name="Value">Function.Call(&quot;desync delta&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="469635132271408">
+                        <comment>At end of loop, if desync is greater than 0,20, resync all tracks</comment>
+                        <event-block sid="471898898823714">
                             <conditions>
-                                <condition id="-14" name="Compare variable" sid="899625826767062" type="System">
-                                    <param id="0" name="Variable">delta</param>
+                                <condition id="-8" name="Compare two values" sid="256895698631028" type="System">
+                                    <param id="0" name="First value">Function.Call(&quot;desync delta&quot;)</param>
                                     <param id="1" name="Comparison">4</param>
-                                    <param id="2" name="Value">0.20</param>
+                                    <param id="2" name="Second value">0.20</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -864,12 +868,13 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <comment>Send a message on end of loop</comment>
+                <comment>Detect end of loop to call function &quot;message .loopRestart&quot; </comment>
                 <event-block sid="471930980753741">
                     <conditions />
                     <actions />
                     <sub-events>
-                        <variable constant="0" name="lastTime" sid="976194618353361" static="0" type="number">0</variable>
+                        <variable constant="0" name="lastTime" sid="976194618353361" static="1" type="number">0</variable>
+                        <variable constant="0" name="currentTime" sid="391984990940914" static="0" type="number">0</variable>
                         <event-block sid="243548217846481">
                             <conditions>
                                 <condition id="-7" name="Compare instance variable" sid="577262854581672" type="emitterLabel">
@@ -884,13 +889,40 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="791701072059935" type="System">
-                                    <param id="0" name="Variable">lastTime</param>
+                                <action id="-9" name="Set value" sid="222032811928352" type="System">
+                                    <param id="0" name="Variable">currentTime</param>
                                     <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
                                 </action>
-                                <action id="14" name="Log" sid="790051513526523" type="Browser">
+                                <action disabled="1" id="14" name="Log" sid="790051513526523" type="Browser">
                                     <param id="0" name="Type">0</param>
-                                    <param id="1" name="Message">Audio.PlaybackTime(emitter.audioTag)</param>
+                                    <param id="1" name="Message">lastTime</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="131693207164104">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="421951852522548" type="System">
+                                    <param id="0" name="Variable">currentTime</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">lastTime</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action disabled="1" id="-42" name="Signal" sid="972913851690581" type="System">
+                                    <param id="0" name="Tag">&quot;loop restart&quot;</param>
+                                </action>
+                                <action id="0" name="Call function" sid="118316082005376" type="Function">
+                                    <param id="0" name="Name">&quot;message .loopRestart&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="920733785921427">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="791701072059935" type="System">
+                                    <param id="0" name="Variable">lastTime</param>
+                                    <param id="1" name="Value">currentTime</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -961,6 +993,19 @@
                                 <action id="14" name="Log" sid="876355443693015" type="Browser">
                                     <param id="0" name="Type">0</param>
                                     <param id="1" name="Message">&quot;returned : &quot; &amp; Function.ReturnValue</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="632349083874944">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="215896907334913" type="System">
+                                    <param id="0" name="Interval (seconds)">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="468983114648023" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;Desync: &quot; &amp; Function.Call(&quot;desync delta&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
