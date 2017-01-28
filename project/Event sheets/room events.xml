@@ -190,14 +190,18 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <comment>TODO: Investigate why, since I added this function, there&apos;s a desync of 0.9 seconds every tick.</comment>
                 <event-block sid="414250334468446">
                     <conditions>
                         <condition id="0" name="On function" sid="558283363448159" type="Function">
                             <param id="0" name="Name">&quot;destroy some emitters&quot;</param>
                         </condition>
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="14" name="Log" sid="463397322120380" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;randomly destroy some&quot;</param>
+                        </action>
+                    </actions>
                     <sub-events>
                         <comment>destroy all those of other levels</comment>
                         <event-block sid="853529172560538">
@@ -770,6 +774,9 @@
                                 <condition id="-11" name="For Each" sid="805357966236679" type="System">
                                     <param id="0" name="Object">emitter</param>
                                 </condition>
+                                <condition id="5" name="Is tag playing" sid="945012196525865" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="258059766034305" type="System">
@@ -786,7 +793,7 @@
                                 </action>
                                 <action disabled="1" id="14" name="Log" sid="591673606155418" type="Browser">
                                     <param id="0" name="Type">0</param>
-                                    <param id="1" name="Message">&quot;for each &quot; &amp; earliest &amp; &quot; &quot; &amp; latest</param>
+                                    <param id="1" name="Message">&quot;for each &quot; &amp; earliest &amp; &quot; &quot; &amp; latest &amp; &quot; (id &quot; &amp; emitter.IID &amp; &quot;)&quot;</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -797,6 +804,14 @@
                                 <action id="-9" name="Set value" sid="937203805354521" type="System">
                                     <param id="0" name="Variable">return</param>
                                     <param id="1" name="Value">latest-earliest</param>
+                                </action>
+                                <action disabled="1" id="14" name="Log" sid="730423022191167" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;earliest &quot; &amp; earliest</param>
+                                </action>
+                                <action disabled="1" id="14" name="Log" sid="864561681447716" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;latest &quot; &amp; latest</param>
                                 </action>
                                 <action id="14" name="Log" sid="798100940639803" type="Browser">
                                     <param id="0" name="Type">0</param>
@@ -844,6 +859,38 @@
                                 <action id="0" name="Call function" sid="493925920320837" type="Function">
                                     <param id="0" name="Name">&quot;resync all track&quot;</param>
                                     <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Send a message on end of loop</comment>
+                <event-block sid="471930980753741">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="lastTime" sid="976194618353361" static="0" type="number">0</variable>
+                        <event-block sid="243548217846481">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="577262854581672" type="emitterLabel">
+                                    <param id="0" name="Instance variable">level</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentLevel</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="675645221920559" type="emitterLabel">
+                                    <param id="0" name="Instance variable">section</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentSection</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="791701072059935" type="System">
+                                    <param id="0" name="Variable">lastTime</param>
+                                    <param id="1" name="Value">Audio.PlaybackTime(emitter.audioTag)</param>
+                                </action>
+                                <action id="14" name="Log" sid="790051513526523" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">Audio.PlaybackTime(emitter.audioTag)</param>
                                 </action>
                             </actions>
                         </event-block>
