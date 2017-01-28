@@ -292,9 +292,9 @@
                             <param id="1" name="Mode">1</param>
                         </action>
                         <action id="0" name="Play" sid="392265650804152" type="Audio">
-                            <param id="0" name="Audio file">Pickup_Coin7</param>
+                            <param id="0" name="Audio file">Pickup</param>
                             <param id="2" name="Loop">0</param>
-                            <param id="3" name="Volume">-25</param>
+                            <param id="3" name="Volume">-10</param>
                             <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
                         </action>
                         <action id="3" name="Set volume" sid="933864095258586" type="Audio">
