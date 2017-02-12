@@ -115,8 +115,8 @@
                         <behavior-instance type="8Direction">
                             <properties>
                                 <max-speed>200</max-speed>
-                                <acceleration>600</acceleration>
-                                <deceleration>500</deceleration>
+                                <acceleration>9999</acceleration>
+                                <deceleration>9999</deceleration>
                                 <directions>8 directions</directions>
                                 <set-angle>360 degree (smooth)</set-angle>
                                 <default-controls>Yes</default-controls>
@@ -132,8 +132,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>804</x>
-                        <y>164</y>
+                        <x>719</x>
+                        <y>10</y>
                         <z>0</z>
                         <width>45.989128113</width>
                         <height>45.989128113</height>
@@ -165,10 +165,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>248</x>
-                        <y>65</y>
+                        <y>212.5</y>
                         <z>0</z>
                         <width>47</width>
-                        <height>854</height>
+                        <height>1149</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -197,10 +197,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>1391</x>
-                        <y>59</y>
+                        <y>206.5</y>
                         <z>0</z>
                         <width>47</width>
-                        <height>863</height>
+                        <height>1158</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>

@@ -396,11 +396,13 @@
         </event-group>
         <event-group description="" sid="981682486005776" title="walls">
             <sub-events>
-                <variable constant="0" name="yDistance" sid="686734392075183" static="0" type="number">300</variable>
-                <variable constant="0" name="xDistance" sid="104086270663331" static="0" type="number">500</variable>
+                <variable constant="0" name="xDistance" sid="104086270663331" static="0" type="number">550</variable>
+                <variable constant="0" name="yDistance" sid="686734392075183" static="0" type="number">550</variable>
                 <event-block sid="882858363464582">
                     <conditions>
-                        <condition id="-2" name="On start of layout" sid="324868324810088" type="System" />
+                        <condition id="0" name="On function" sid="517262043750257" type="Function">
+                            <param id="0" name="Name">&quot;walls .replaceWalls&quot;</param>
+                        </condition>
                     </conditions>
                     <actions />
                     <sub-events>
@@ -466,7 +468,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <comment>bump audio</comment>
+                <comment>bump sfx</comment>
                 <event-block sid="694959145938549">
                     <conditions>
                         <condition id="-6" name="Every X seconds" sid="238015815158590" type="System">
@@ -673,6 +675,17 @@
                         </event-block>
                     </sub-events>
                 </event-block>
+                <event-block sid="470986546765631">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="324868324810088" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="520002882846927" type="Function">
+                            <param id="0" name="Name">&quot;walls .replaceWalls&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="279352294193933" title="flow">
@@ -691,6 +704,10 @@
                         <action id="14" name="Log" sid="565059735996765" type="Browser">
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;Entering wave &quot; &amp; currentWave</param>
+                        </action>
+                        <action id="0" name="Call function" sid="568601536145387" type="Function">
+                            <param id="0" name="Name">&quot;walls .replaceWalls&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
                     <sub-events>
@@ -764,7 +781,7 @@
                     </actions>
                     <sub-events>
                         <variable constant="0" name="varX" sid="136279378594740" static="0" type="number">300</variable>
-                        <variable constant="0" name="varY" sid="555240108102543" static="0" type="number">200</variable>
+                        <variable constant="0" name="varY" sid="555240108102543" static="0" type="number">400</variable>
                         <event-block sid="562684034166768">
                             <conditions>
                                 <condition id="-7" name="Compare instance variable" sid="380468454650423" type="emitterLabel">
