@@ -27,6 +27,7 @@
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -188,6 +189,22 @@
         <object-type name="Instructions" sid="626027495995596">
             <plugin id="Text" />
         </object-type>
+        <object-type name="wall" sid="455667081266514">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="which" sid="688230661874486" type="string" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Solid" sid="734962358477221">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="809612247872527" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
@@ -212,8 +229,8 @@
                 <positioned-audio></positioned-audio>
                 <panning-model>HRTF</panning-model>
                 <distance-model>Exponential</distance-model>
-                <listener-z-height>100</listener-z-height>
-                <reference-distance>100</reference-distance>
+                <listener-z-height>20</listener-z-height>
+                <reference-distance>200</reference-distance>
                 <maximum-distance>10000</maximum-distance>
                 <roll-off-factor>2</roll-off-factor>
             </properties>
@@ -233,6 +250,8 @@
         <file name="Pickup_Coin7.ogg" />
         <file name="Pickup.m4a" />
         <file name="Pickup.ogg" />
+        <file name="bump.m4a" />
+        <file name="bump.ogg" />
     </sounds-folder>
     <music-folder>
         <file name="Kick-TiSh_01-01.m4a" />

@@ -394,6 +394,287 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" sid="981682486005776" title="walls">
+            <sub-events>
+                <variable constant="0" name="yDistance" sid="686734392075183" static="0" type="number">300</variable>
+                <variable constant="0" name="xDistance" sid="104086270663331" static="0" type="number">500</variable>
+                <event-block sid="882858363464582">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="324868324810088" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="848000744856004">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="235654751372685" type="wall">
+                                    <param id="0" name="Instance variable">which</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;top&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="744383458453098" type="wall">
+                                    <param id="0" name="X">player.X</param>
+                                    <param id="1" name="Y">player.Y - yDistance</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="745660294822169">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="383116778003629" type="wall">
+                                    <param id="0" name="Instance variable">which</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;bot&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="267613612493636" type="wall">
+                                    <param id="0" name="X">player.X</param>
+                                    <param id="1" name="Y">player.Y + yDistance</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="899496924526826">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="360568469236212" type="wall">
+                                    <param id="0" name="Instance variable">which</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;left&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="699801463003797" type="wall">
+                                    <param id="0" name="X">player.X - xDistance</param>
+                                    <param id="1" name="Y">player.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="147070798660467">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="979182573389975" type="wall">
+                                    <param id="0" name="Instance variable">which</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;right&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="322908276292968" type="wall">
+                                    <param id="0" name="X">player.X + xDistance</param>
+                                    <param id="1" name="Y">player.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>bump audio</comment>
+                <event-block sid="694959145938549">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="238015815158590" type="System">
+                            <param id="0" name="Interval (seconds)">0.2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="700274975369937">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="281168774061271" type="Keyboard">
+                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                </condition>
+                                <condition id="3" name="Is button down" sid="125994485625230" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">12</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="952054879457699">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="445869303620008" type="wall">
+                                            <param id="0" name="Instance variable">which</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;top&quot;</param>
+                                        </condition>
+                                        <condition id="9" name="Is overlapping at offset" sid="552834330890745" type="player">
+                                            <param id="0" name="Object">wall</param>
+                                            <param id="1" name="Offset X">0</param>
+                                            <param id="2" name="Offset Y">-10</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action disabled="1" id="14" name="Log" sid="856354694941029" type="Browser">
+                                            <param id="0" name="Type">1</param>
+                                            <param id="1" name="Message">&quot;bump&quot;</param>
+                                        </action>
+                                        <action disabled="1" id="0" name="Play" sid="956247140526255" type="Audio">
+                                            <param id="0" name="Audio file">bump</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;bump&quot;</param>
+                                        </action>
+                                        <action id="24" name="Play at position" sid="389838768772116" type="Audio">
+                                            <param id="0" name="Audio file">bump</param>
+                                            <param id="1" name="Loop">0</param>
+                                            <param id="2" name="Volume">0</param>
+                                            <param id="3" name="X">player.X</param>
+                                            <param id="4" name="Y">player.Y -20</param>
+                                            <param id="5" name="Angle">0</param>
+                                            <param id="6" name="Inner angle">360</param>
+                                            <param id="7" name="Outer angle">360</param>
+                                            <param id="8" name="Outer gain">0</param>
+                                            <param id="9" name="Tag (optional)">&quot;bump&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="540929920375785">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="629304719192625" type="Keyboard">
+                                    <param id="0" name="Key">40 (Down arrow)</param>
+                                </condition>
+                                <condition id="3" name="Is button down" sid="824638689574263" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">13</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="759739517666885">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="405499263101521" type="wall">
+                                            <param id="0" name="Instance variable">which</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;bot&quot;</param>
+                                        </condition>
+                                        <condition id="9" name="Is overlapping at offset" sid="594593864099296" type="player">
+                                            <param id="0" name="Object">wall</param>
+                                            <param id="1" name="Offset X">0</param>
+                                            <param id="2" name="Offset Y">10</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action disabled="1" id="14" name="Log" sid="531671367922958" type="Browser">
+                                            <param id="0" name="Type">1</param>
+                                            <param id="1" name="Message">&quot;bump&quot;</param>
+                                        </action>
+                                        <action disabled="1" id="0" name="Play" sid="463818737350688" type="Audio">
+                                            <param id="0" name="Audio file">bump</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;bump&quot;</param>
+                                        </action>
+                                        <action id="24" name="Play at position" sid="417261174021891" type="Audio">
+                                            <param id="0" name="Audio file">bump</param>
+                                            <param id="1" name="Loop">0</param>
+                                            <param id="2" name="Volume">0</param>
+                                            <param id="3" name="X">player.X</param>
+                                            <param id="4" name="Y">player.Y +20</param>
+                                            <param id="5" name="Angle">0</param>
+                                            <param id="6" name="Inner angle">360</param>
+                                            <param id="7" name="Outer angle">360</param>
+                                            <param id="8" name="Outer gain">0</param>
+                                            <param id="9" name="Tag (optional)">&quot;bump&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="722659545266718">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="968037803345873" type="Keyboard">
+                                    <param id="0" name="Key">37 (Left arrow)</param>
+                                </condition>
+                                <condition id="3" name="Is button down" sid="280900967978901" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">14</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="526355404534105">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="606256300593425" type="wall">
+                                            <param id="0" name="Instance variable">which</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;left&quot;</param>
+                                        </condition>
+                                        <condition id="9" name="Is overlapping at offset" sid="206170890736483" type="player">
+                                            <param id="0" name="Object">wall</param>
+                                            <param id="1" name="Offset X">-10</param>
+                                            <param id="2" name="Offset Y">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action disabled="1" id="14" name="Log" sid="607319657939833" type="Browser">
+                                            <param id="0" name="Type">1</param>
+                                            <param id="1" name="Message">&quot;bump&quot;</param>
+                                        </action>
+                                        <action id="24" name="Play at position" sid="117852498871375" type="Audio">
+                                            <param id="0" name="Audio file">bump</param>
+                                            <param id="1" name="Loop">0</param>
+                                            <param id="2" name="Volume">0</param>
+                                            <param id="3" name="X">player.X -20</param>
+                                            <param id="4" name="Y">player.Y</param>
+                                            <param id="5" name="Angle">0</param>
+                                            <param id="6" name="Inner angle">360</param>
+                                            <param id="7" name="Outer angle">360</param>
+                                            <param id="8" name="Outer gain">0</param>
+                                            <param id="9" name="Tag (optional)">&quot;bump&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="291200009332321">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="392926544380632" type="Keyboard">
+                                    <param id="0" name="Key">39 (Right arrow)</param>
+                                </condition>
+                                <condition id="3" name="Is button down" sid="648609428015380" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">15</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="565629081506548">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="248428691595569" type="wall">
+                                            <param id="0" name="Instance variable">which</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;right&quot;</param>
+                                        </condition>
+                                        <condition id="9" name="Is overlapping at offset" sid="620991021966084" type="player">
+                                            <param id="0" name="Object">wall</param>
+                                            <param id="1" name="Offset X">10</param>
+                                            <param id="2" name="Offset Y">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action disabled="1" id="14" name="Log" sid="673513033541145" type="Browser">
+                                            <param id="0" name="Type">1</param>
+                                            <param id="1" name="Message">&quot;bump&quot;</param>
+                                        </action>
+                                        <action id="24" name="Play at position" sid="673878202386361" type="Audio">
+                                            <param id="0" name="Audio file">bump</param>
+                                            <param id="1" name="Loop">0</param>
+                                            <param id="2" name="Volume">0</param>
+                                            <param id="3" name="X">player.X +20</param>
+                                            <param id="4" name="Y">player.Y</param>
+                                            <param id="5" name="Angle">0</param>
+                                            <param id="6" name="Inner angle">360</param>
+                                            <param id="7" name="Outer angle">360</param>
+                                            <param id="8" name="Outer gain">0</param>
+                                            <param id="9" name="Tag (optional)">&quot;bump&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
         <event-group description="" sid="279352294193933" title="flow">
             <sub-events>
                 <event-block sid="931847693269505">
@@ -846,17 +1127,34 @@
                     <actions>
                         <action id="14" name="Log" sid="670368761444603" type="Browser">
                             <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;Loop restarted&quot;</param>
+                            <param id="1" name="Message">&quot;Loop&quot;</param>
                         </action>
                     </actions>
                     <sub-events>
                         <comment>At end of loop, if desync is greater than 0,20, resync all tracks</comment>
+                        <variable constant="0" name="desyncDelta" sid="386811845415376" static="0" type="number">0</variable>
+                        <variable constant="1" name="DESYNC_MAX" sid="983447204449967" static="0" type="number">5</variable>
+                        <variable constant="1" name="DESYNC_MIN" sid="836005879119791" static="0" type="number">0.18</variable>
+                        <event-block sid="838426903081255">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="404463718016333" type="System">
+                                    <param id="0" name="Variable">desyncDelta</param>
+                                    <param id="1" name="Value">Function.Call(&quot;desync delta&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
                         <event-block sid="471898898823714">
                             <conditions>
                                 <condition id="-8" name="Compare two values" sid="256895698631028" type="System">
-                                    <param id="0" name="First value">Function.Call(&quot;desync delta&quot;)</param>
+                                    <param id="0" name="First value">desyncDelta</param>
                                     <param id="1" name="Comparison">4</param>
-                                    <param id="2" name="Second value">0.20</param>
+                                    <param id="2" name="Second value">DESYNC_MIN</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="305641766237803" type="System">
+                                    <param id="0" name="First value">desyncDelta</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">DESYNC_MAX</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -925,6 +1223,47 @@
                                     <param id="1" name="Value">currentTime</param>
                                 </action>
                             </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="139549657218151">
+                    <conditions>
+                        <condition id="0" name="On function" sid="877642171373670" type="Function">
+                            <param id="0" name="Name">&quot;schedule&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="what" sid="874845271440354" static="0" type="text"></variable>
+                        <event-block sid="219045279025566">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="964355515981592" type="System">
+                                    <param id="0" name="Variable">what</param>
+                                    <param id="1" name="Value">Function.Param(0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="135537288469119">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="916571019414039" type="System">
+                                    <param id="0" name="Variable">what</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;resync&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="440702757763493">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="355980066173892" type="System" />
+                                <condition id="-14" name="Compare variable" sid="703405156350150" type="System">
+                                    <param id="0" name="Variable">what</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;bridge&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
                         </event-block>
                     </sub-events>
                 </event-block>
