@@ -325,9 +325,13 @@
                             <param id="3" name="Volume">-10</param>
                             <param id="1" name="Tag (optional)">&quot;pickup&quot;</param>
                         </action>
-                        <action id="3" name="Set volume" sid="933864095258586" type="Audio">
+                        <action disabled="1" id="3" name="Set volume" sid="933864095258586" type="Audio">
                             <param id="0" name="Tag">emitter.audioTag</param>
                             <param id="1" name="dB">-15</param>
+                        </action>
+                        <action id="0" name="Call function" sid="719981882216868" type="Function">
+                            <param id="0" name="Name">&quot;adjust picked volume&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;high&quot;</param>
                         </action>
                         <action id="-9" name="Set value" sid="807805727247375" type="System">
                             <param id="0" name="Variable">collidedInstrument</param>
@@ -384,23 +388,19 @@
                                 <action id="-9" name="Destroy" sid="259018630203354" type="emitter" />
                             </actions>
                         </event-block>
-                        <event-block sid="952054240373380">
-                            <conditions />
-                            <actions>
-                                <action disabled="1" id="11" name="Set collisions enabled" sid="715852093403407" type="emitter">
-                                    <param id="0" name="Collisions">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
                         <event-block sid="211026577087959">
                             <conditions />
                             <actions>
                                 <action id="-16" name="Wait" sid="981806724743713" type="System">
                                     <param id="0" name="Seconds">2</param>
                                 </action>
-                                <action id="0" name="Call function" sid="276755266456660" type="Function">
+                                <action disabled="1" id="0" name="Call function" sid="276755266456660" type="Function">
                                     <param id="0" name="Name">&quot;advance wave&quot;</param>
                                     <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="188255575416663" type="Function">
+                                    <param id="0" name="Name">&quot;schedule&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;advance wave&quot;</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -858,6 +858,10 @@
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;function Spawn 2&quot;</param>
                         </action>
+                        <action id="0" name="Call function" sid="785742231385913" type="Function">
+                            <param id="0" name="Name">&quot;adjust picked volume&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;low&quot;</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <variable constant="0" name="varX" sid="959255289035880" static="0" type="number">300</variable>
@@ -993,7 +997,7 @@
                             <param id="3" name="Volume">0</param>
                             <param id="1" name="Tag (optional)">&quot;bridge&quot;</param>
                         </action>
-                        <action id="14" name="Log" sid="844572803524545" type="Browser">
+                        <action disabled="1" id="14" name="Log" sid="844572803524545" type="Browser">
                             <param id="0" name="Type">1</param>
                             <param id="1" name="Message">&quot;********* drum=&quot;</param>
                         </action>
@@ -1057,7 +1061,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="956598872155061">
+                        <event-block disabled="1" sid="956598872155061">
                             <conditions>
                                 <condition id="-7" name="Compare instance variable" sid="195308752539469" type="emitterLabel">
                                     <param id="0" name="Instance variable">section</param>
@@ -1092,6 +1096,7 @@
             <sub-events>
                 <variable comment="1=true" constant="0" name="scheduledResync" sid="621835892565677" static="1" type="number">0</variable>
                 <variable comment="1=true" constant="0" name="scheduledBridge" sid="650783950398545" static="1" type="number">0</variable>
+                <variable comment="1=true" constant="0" name="scheduledNextWave" sid="722274544691104" static="1" type="number">0</variable>
                 <comment>to schedule something to happen at the next restart of loop</comment>
                 <event-block sid="139549657218151">
                     <conditions>
@@ -1156,15 +1161,23 @@
                                 <condition id="-14" name="Compare variable" sid="857693208267878" type="System">
                                     <param id="0" name="Variable">what</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">&quot;next section&quot;</param>
+                                    <param id="2" name="Value">&quot;advance wave&quot;</param>
                                 </condition>
                             </conditions>
-                            <actions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="618995009107404" type="System">
+                                    <param id="0" name="Variable">scheduledNextWave</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="953789767688934" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;scheduled the next wave&quot;</param>
+                                </action>
+                            </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
                 <comment>At end of a loop</comment>
-                <comment>TO DO : separate in 2 function: the check for a resync &amp; the loop restart function</comment>
                 <event-block sid="278820410427462">
                     <conditions>
                         <condition id="0" name="On function" sid="887435978693490" type="Function">
@@ -1212,6 +1225,25 @@
                                 </action>
                                 <action id="-9" name="Set value" sid="312839459746494" type="System">
                                     <param id="0" name="Variable">scheduledBridge</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="773368065204474">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="789183191785351" type="System">
+                                    <param id="0" name="Variable">scheduledNextWave</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="552078173103533" type="Function">
+                                    <param id="0" name="Name">&quot;advance wave&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="-9" name="Set value" sid="842898738602633" type="System">
+                                    <param id="0" name="Variable">scheduledNextWave</param>
                                     <param id="1" name="Value">0</param>
                                 </action>
                             </actions>
@@ -1532,7 +1564,18 @@
             </conditions>
             <actions />
             <sub-events>
-                <variable constant="0" name="pickedVolume" sid="830511671003270" static="0" type="number">-15</variable>
+                <variable constant="1" name="VOLUME_LOW" sid="830511671003270" static="0" type="number">-15</variable>
+                <variable constant="1" name="VOLUME_HIGH" sid="324164530341213" static="0" type="number">0</variable>
+                <variable constant="0" name="mode" sid="489197348397740" static="0" type="text"></variable>
+                <event-block sid="273604971638689">
+                    <conditions />
+                    <actions>
+                        <action id="-9" name="Set value" sid="750003772670194" type="System">
+                            <param id="0" name="Variable">mode</param>
+                            <param id="1" name="Value">Function.Param(0)</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="606451439589879">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="641456180337356" type="emitter">
@@ -1542,12 +1585,39 @@
                             <param id="0" name="Object">emitter</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="3" name="Set volume" sid="845261243530127" type="Audio">
-                            <param id="0" name="Tag">emitter.audioTag</param>
-                            <param id="1" name="dB">pickedVolume</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="104836075667386">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="789653640524050" type="System">
+                                    <param id="0" name="Variable">mode</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;high&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set volume" sid="845261243530127" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="dB">VOLUME_HIGH</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="142530228135143">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="779169873912500" type="System">
+                                    <param id="0" name="Variable">mode</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;low&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set volume" sid="738528787522383" type="Audio">
+                                    <param id="0" name="Tag">emitter.audioTag</param>
+                                    <param id="1" name="dB">VOLUME_LOW</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-block>
